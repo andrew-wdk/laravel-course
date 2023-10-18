@@ -1,4 +1,4 @@
-<?php
+ <?php 
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -27,7 +27,12 @@ Route::get('secret-santa', function () {
 
 Route::post('secret-santa', function (Request $request) {
     $names = ['micheal', 'mina', 'bisho', 'marina', 'sandra', 'roufeail', 'andrew'];
-
+    $validated = $request->validate(($rules = ['name' => ['required', 'in:micheal,mina,bisho,marina,sandra,roufeail,andrew']]), ($params = [
+        'messages' => [
+            'name.in' => 'Your name is not in the list of participants.',
+        ],
+    ]));
+    
     $receivers = Cache::get('receivers');
 
     if ($receivers == null) {
@@ -38,7 +43,7 @@ Route::post('secret-santa', function (Request $request) {
     do {
         shuffle($receivers);
         $receiver = $receivers[0];
-    } while($receiver == $request->my_name);
+    } while($receiver == $validated['name']);
 
     $receivers = array_diff($receivers, [$receiver]);
 
@@ -46,3 +51,10 @@ Route::post('secret-santa', function (Request $request) {
 
     return $receiver;
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

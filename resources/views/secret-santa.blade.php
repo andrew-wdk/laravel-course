@@ -32,8 +32,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script>
             document.getElementById('submit').addEventListener('click', function (e) {
+                e.preventDefault();
                 let name = document.getElementById('name').value;
-                let token = "{{csrf_token()}}";
+                let token = "{{ csrf_token() }}";
                 $.ajax({
                     url: "{{ url('secret-santa') }}",
                     method: 'POST',
@@ -41,8 +42,13 @@
                     success: function(data) {
                         window.alert(data);
                     },
-                })
-            });
+                    error: function (response) {
+                       alert(response.responseJSON.message);
+                    //    this method is to get the message of the error
+                    }
+                    
+        });
+    });
         </script>
     </body>
-</html>
+</html> 
