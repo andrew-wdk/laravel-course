@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +28,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::view('post/create', 'admin.post.create', [
     'users' => ['roufeail', 'marina', 'micheal', 'andrew']
 ]);
+
+Route::view('user/create', 'users.create');
+Route::post('user/create', function(Request $request) {
+    $input = implode(', ', $request->only('name', 'email', 'password'));
+    DB::unprepared("INSERT INTO users (name, email, password) VALUES ('{$input->name}', '{$input->email}', '{$input->password}');");
+    
+'
+"}'    return redirect('/home');
+});
 
 Route::view('post', 'admin.post.index', [
     'posts' => [
