@@ -27,30 +27,24 @@ Route::get('secret-santa', function () {
 
 Route::post('secret-santa', function (Request $request) {
     $names = ['micheal', 'mina', 'bisho', 'marina', 'sandra', 'roufeail', 'andrew'];
-    $validated = $request->validate(($rules = ['name' => ['required', 'in:micheal,mina,bisho,marina,sandra,roufeail,andrew']]), ($params = [
-        'messages' => [
-            'name.in' => 'Your name is not in the list of participants.',
-        ],
-    ]));
-    
-    $receivers = Cache::get('receivers');
-
-    if ($receivers == null) {
-        Cache::set('receivers', $names);
-        $receivers = $names;
+    if(!in_array($request->name, $names)) {
+        return "your name is not in the list!";
     }
-
+    ['andrew' => 'roufeail'];
+    $selected = Cache::get('selected') ?? [];
+    if(in_array($request->name, array_keys($selected))) {
+        return $selected[$request->name];
+    }
+    $receivers = array_diff($names, $selected);
     do {
         shuffle($receivers);
         $receiver = $receivers[0];
-    } while($receiver == $validated['name']);
-
-    $receivers = array_diff($receivers, [$receiver]);
-
-    Cache::set('receivers', $receivers);
-
+    } while($receiver == $request->name);
+    $selected[$request->name] = $receiver;
+    Cache::set('selected', $selected);
     return $receiver;
 });
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
