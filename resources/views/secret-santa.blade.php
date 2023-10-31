@@ -42,13 +42,8 @@
                     success: function(data) {
                         window.alert(data);
                     },
-                    error: function (response) {
-                       alert(response.responseJSON.message);
-                    //    this method is to get the message of the error
-                    }
-                    
-        });
-    });
+                })
+            });
         </script>
     </body>
 </html> 
