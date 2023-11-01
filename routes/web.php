@@ -33,3 +33,6 @@ Route::view('post', 'admin.post.index', [
         json_decode(json_encode(['title' => 'test', 'user' => 'andrew', 'type' => 'important', 'status' => 'active', 'publish_at' => '2023-10-29 13:00']))
     ]
 ]);
+Route::view('event/create', 'admin.event.create', [
+    'users' => ['roufeail', 'marina', 'micheal', 'andrew']
+]);

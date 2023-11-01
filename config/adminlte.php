@@ -63,8 +63,8 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => 'Church',
+    'logo_img' => 'vendor/adminlte/dist/img/church2.jpg',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -84,9 +84,9 @@ return [
     */
 
     'auth_logo' => [
-        'enabled' => false,
+        'enabled' => true,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+            'path' => 'vendor/adminlte/dist/img/church2.jpg',
             'alt' => 'Auth Logo',
             'class' => '',
             'width' => 50,
@@ -109,11 +109,11 @@ return [
     'preloader' => [
         'enabled' => true,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+            'path' => 'vendor/adminlte/dist/img/church.jpg',
             'alt' => 'AdminLTE Preloader Image',
-            'effect' => 'animation__shake',
-            'width' => 60,
-            'height' => 60,
+            'effect' => '',
+            'width' => 500,
+            'height' => 500,
         ],
     ],
 
@@ -332,6 +332,7 @@ return [
         [
             'text'    => 'Posts',
             'icon'    => 'fas fa-fw fa-bullhorn',
+            
             'submenu' => [
                 [
                     'text' => 'List',
@@ -342,8 +343,26 @@ return [
                     'text'    => 'Create',
                     'url'     => 'post/create',
                     'icon'    => 'fas fa-plus',
-                ],
+                ],  
             ],
+            
+
+        ],
+
+        [
+            'text'    => 'Events',
+            'icon'    => 'fa fa-calendar',
+            
+            'submenu' => [
+                
+                [
+                    'text'    => 'Create',
+                    'url'     => 'event/create',
+                    'icon'    => 'fas fa-plus',
+                ],  
+            ],
+            
+
         ],
         ['header' => 'labels'],
         [
