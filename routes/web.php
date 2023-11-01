@@ -21,7 +21,6 @@ Route::get('/', function () {
 
 Route::get('/login', function() { return 'comming-soon';});
 
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -30,13 +29,6 @@ Route::view('post/create', 'admin.post.create', [
 ]);
 
 Route::view('user/create', 'users.create');
-Route::post('user/create', function(Request $request) {
-    $input = implode(', ', $request->only('name', 'email', 'password'));
-    DB::unprepared("INSERT INTO users (name, email, password) VALUES ('{$input->name}', '{$input->email}', '{$input->password}');");
-    
-'
-"}'    return redirect('/home');
-});
 
 Route::view('post', 'admin.post.index', [
     'posts' => [
@@ -47,3 +39,4 @@ Route::view('post', 'admin.post.index', [
 Route::view('event/create', 'admin.event.create', [
     'users' => ['roufeail', 'marina', 'micheal', 'andrew']
 ]);
+Route::view('user/list', 'users.index');
