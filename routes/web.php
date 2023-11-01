@@ -29,13 +29,6 @@ Route::view('post/create', 'admin.post.create', [
 ]);
 
 Route::view('user/create', 'users.create');
-Route::post('user/create', function(Request $request) {
-    $input = implode(', ', $request->only('name', 'email', 'password'));
-    DB::unprepared("INSERT INTO users (name, email, password) VALUES ('{$input->name}', '{$input->email}', '{$input->password}');");
-    
-
-    return redirect('/home');
-});
 
 Route::view('post', 'admin.post.index', [
     'posts' => [
