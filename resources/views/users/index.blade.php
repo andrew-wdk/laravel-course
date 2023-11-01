@@ -18,18 +18,17 @@
                         <th>الفصل</th>
                         <th>اخر افتقاد</th>
                         <th>الخادم المسئول</th>
-                        <th>more details</th>
-                        <th></th>
+                        <th>actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                <!-- @foreach($posts ?? [] as $key => $post) -->
-                    <!-- <tr>
+                @foreach($user ?? [] as $key => $user) 
+                    <tr>
                         <td>{{$key + 1}}</td>
-                        <td>{{$post->title}}</td>
-                        <td>{{$post->type}}</td>
-                        <td>{{$post->status}}</td>
-                        <td>{{$post->publish_at}}</td>
+                        <td>{{$post->Username}}</td>
+                        <td>{{$post->school_year}}</td>
+                        <td>{{$post->last_visit}}</td>
+                        <td>{{$post->responsible_servant}}</td>
                         <td>
                             <div class="row">
                                 <button class="btn btn-sm btn-primary mr-1">
@@ -45,7 +44,7 @@
                         </td>
                     </tr>
                 @endforeach
-                </tbody> -->
+                </tbody>
             </table>
         </div>
     </div>
