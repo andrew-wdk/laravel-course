@@ -13,16 +13,80 @@
         <div class="card-body">
             <div class="row">
                 <div class="form-group col-md-12">
-                    <label for="name">name</label>
+                    <label for="name">الأسم</label>
                     <input type="text" name="name" id="name" class="form-control" required>
                 </div>
                 <div class="form-group col-md-12">
-                    <label for="email">email</label>
-                    <input type="email" name="email" id="email" class="form-control" required>
+                    <label for="email">الأيميل</label>
+                    <input type="email" name="email" id="email" class="form-control">
                 </div>
                 <div class="form-group col-md-12">
                     <label for="password">password</label>
                     <input type="password" name="password" id="password" class="form-control" required>
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="NationalID">الرقم القومى</label>
+                    <input type="number" name="NationalID" id="NationalID" class="form-control" required min="10000000000000" max="99999999999999" placeholder="أدخل 14 رقم">
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="section">الفصل</label><br>
+                    <label class="radio-inline"><input type="radio" name="choosingsection" checked>4</label>
+                    <label class="radio-inline"><input type="radio" name="choosingsection">5</label>
+                    <label class="radio-inline"><input type="radio" name="choosingsection">6</label>
+                    <style> .radio-inline {
+                     margin-right: 30px ; 
+                    } </style>
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="telephone-no.">الرقم الشخصى</label>
+                    <input type="number" name="" id="telephone-no" class="form-control" required min="10000000000" max="99999999999" placeholder="أدخل 11 رقم">
+                    <!-- I want to add here to accept zero's -->
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="address">العنوان</label>
+                    <input type="text" name="address" id="address" class="form-control" required>
+                </div>
+                <div class="dropdown"><label for="father">اب الأعتراف</label>
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">اب الأعتراف
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li>ابونا يوسف</li>
+                        <li>ابونا تادرس</li>
+                        <li>ابونا موسى</li>
+                        <li>ابونا انجيلوس</li>
+                        <li>اب كاهن اخر</a></li>
+                    </ul>
+                     <input type="text" id="other-input" name="other-input" placeholder="ادخل اسم الكاهن" style="display: none;">
+                </div>
+                <div class="form-group col-md-12">
+                <label for="father">اب الأعتراف</label>
+<select id="father" name="father">
+  <option value="ابونا يوسف">ابونا يوسف</option>
+  <option value="ابونا تادرس">ابونا تادرس</option>
+  <option value="ابونا موسى">ابونا موسى</option>
+  <option value="ابونا انجيلوس">ابونا انجيلوس</option>
+  <option value="other">اب كاهن اخر</option>
+</select>
+                   
+                    <script>
+                        var select = document.getElementById("father");
+                        // Get the input element by its id
+                        var input = document.getElementById("other-input");
+
+                        // Add an event listener for the change event, which fires when the user selects an option
+                        select.addEventListener("change", function() {
+                        // Get the value of the selected option
+                        var value = select.value;
+                        // Check if the value is "other"
+                        if (value == "other") {
+                        // Show the input element
+                        input.style.display = "block";
+                        } else {
+                        // Hide the input element
+                        input.style.display = "none";
+                                }
+                            });
+                    </script>
                 </div>
             </div>
         </div>
