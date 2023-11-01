@@ -3,12 +3,12 @@
 @section('title', 'users')
 
 @section('content_header')
-    <h1>add user</h1>
+<h1>add user</h1>
 @stop
 
 @section('content')
 <form action="{{url('user/create')}}" method="POST">
-{{csrf_field()}}
+    {{csrf_field()}}
     <div class="card card-primary">
         <div class="card-body">
             <div class="row">
@@ -33,9 +33,11 @@
                     <label class="radio-inline"><input type="radio" name="choosingsection" checked>4</label>
                     <label class="radio-inline"><input type="radio" name="choosingsection">5</label>
                     <label class="radio-inline"><input type="radio" name="choosingsection">6</label>
-                    <style> .radio-inline {
-                     margin-right: 30px ; 
-                    } </style>
+                    <style>
+                        .radio-inline {
+                            margin-right: 30px;
+                        }
+                    </style>
                 </div>
                 <div class="form-group col-md-12">
                     <label for="telephone-no.">الرقم الشخصى</label>
@@ -46,7 +48,7 @@
                     <label for="address">العنوان</label>
                     <input type="text" name="address" id="address" class="form-control" required>
                 </div>
-                <div class="dropdown"><label for="father">اب الأعتراف</label>
+                <!-- <div class="dropdown"><label for="father">اب الأعتراف</label>
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">اب الأعتراف
                     <span class="caret"></span></button>
                     <ul class="dropdown-menu">
@@ -57,17 +59,17 @@
                         <li>اب كاهن اخر</a></li>
                     </ul>
                      <input type="text" id="other-input" name="other-input" placeholder="ادخل اسم الكاهن" style="display: none;">
-                </div>
+                </div> -->
                 <div class="form-group col-md-12">
-                <label for="father">اب الأعتراف</label>
-<select id="father" name="father">
-  <option value="ابونا يوسف">ابونا يوسف</option>
-  <option value="ابونا تادرس">ابونا تادرس</option>
-  <option value="ابونا موسى">ابونا موسى</option>
-  <option value="ابونا انجيلوس">ابونا انجيلوس</option>
-  <option value="other">اب كاهن اخر</option>
-</select>
-                   
+                    <label for="father">اب الأعتراف</label><br>
+                    <select id="father" name="father" class="form-control">
+                        <option value="ابونا يوسف">ابونا يوسف</option>
+                        <option value="ابونا تادرس">ابونا تادرس</option>
+                        <option value="ابونا موسى">ابونا موسى</option>
+                        <option value="ابونا انجيلوس">ابونا انجيلوس</option>
+                        <option value="other">اب كاهن اخر</option>
+                    </select>
+                    <input type="text" id="other-input" name="other-input" placeholder="ادخل اسم الكاهن" style="display: none;">
                     <script>
                         var select = document.getElementById("father");
                         // Get the input element by its id
@@ -75,17 +77,17 @@
 
                         // Add an event listener for the change event, which fires when the user selects an option
                         select.addEventListener("change", function() {
-                        // Get the value of the selected option
-                        var value = select.value;
-                        // Check if the value is "other"
-                        if (value == "other") {
-                        // Show the input element
-                        input.style.display = "block";
-                        } else {
-                        // Hide the input element
-                        input.style.display = "none";
-                                }
-                            });
+                            // Get the value of the selected option
+                            var value = select.value;
+                            // Check if the value is "other"
+                            if (value == "other") {
+                                // Show the input element
+                                input.style.display = "block";
+                            } else {
+                                // Hide the input element
+                                input.style.display = "none";
+                            }
+                        });
                     </script>
                 </div>
             </div>
@@ -104,9 +106,9 @@
 @stop
 
 @section('js')
-    <script>
-        $(document).ready(function() {
-            $('.select2').select2();
-        });
-    </script>
+<script>
+    $(document).ready(function() {
+        $('.select2').select2();
+    });
+</script>
 @stop
