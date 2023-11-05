@@ -7,7 +7,8 @@
 @stop
 
 @section('content')
-<form>
+<form action="{{route('post.store')}}" method="POST">
+    {{csrf_field()}}
     <div class="card card-primary">
         <div class="card-body">
             <div class="row">
@@ -32,8 +33,8 @@
                     <label for="user_id">User</label>
                     <select name="user_id" id="user_id" class="form-control">
                         <option value="">Select</option>
-                        @foreach($users ?? [] as $id => $name)
-                            <option value="{{$id}}">{{$name}}</option>
+                        @foreach($users ?? [] as $user)
+                            <option value="{{$user->id}}">{{$user->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -47,14 +48,14 @@
                 <div class="form-group col-md-6">
                     <label for="type">Type</label>
                     <select name="type" id="type" class="form-control">
-                        @foreach($types ?? [] as $type)
+                        @foreach((new App\Models\Post())->types as $type)
                             <option value="{{$type}}">{{$type}}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="schedule_time">Publish at</label>
-                    <input name="schedule_time" id="schedule_time" type="datetime-local" class="form-control">
+                    <label for="publish_at">Publish at</label>
+                    <input name="publish_at" id="publish_at" type="datetime-local" class="form-control">
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -24,18 +25,14 @@ Route::get('/login', function() { return 'comming-soon';});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::view('post/create', 'admin.post.create', [
-    'users' => ['roufeail', 'marina', 'micheal', 'andrew']
-]);
+// Route::get('post', [PostController::class, 'index']);
+// Route::get('post/create', [PostController::class, 'create']);
+// Route::post('post', [PostController::class, 'store'])->name('post.store');
+
+Route::resource('post', PostController::class);
 
 Route::view('user/create', 'users.create');
 
-Route::view('post', 'admin.post.index', [
-    'posts' => [
-        json_decode(json_encode(['title' => 'test', 'user' => 'andrew', 'type' => 'important', 'status' => 'active', 'publish_at' => null])),
-        json_decode(json_encode(['title' => 'test', 'user' => 'andrew', 'type' => 'important', 'status' => 'active', 'publish_at' => '2023-10-29 13:00']))
-    ]
-]);
 Route::view('event/create', 'admin.event.create', [
     'users' => ['roufeail', 'marina', 'micheal', 'andrew']
 ]);
