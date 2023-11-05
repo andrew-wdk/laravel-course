@@ -12,15 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->bigInteger('NationalID');
-            $table->tinyInteger('choosingsection');
-            $table->bigInteger('telephone-no')->nullable();
-            // $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
-            // $table->foreign('user_id')->references('id')->on('users')->onDelete('set null'); // another way to add constraint
-            $table->text('address');
-            $table->text('father');
-            $table->text('other-input');
-            
+            $table->bigInteger('NationalID')->nullable();
+            $table->tinyInteger('choosingsection')->nullable();
+            $table->string('telephone-no')->nullable();
+            $table->text('address')->nullable();
+            $table->string('father')->nullable();
         });
     }
 
@@ -35,7 +31,6 @@ return new class extends Migration
             $table->dropColumn('telephone-no');
             $table->dropColumn('address');
             $table->dropColumn('father');
-            $table->dropColumn('other-input');
         });
     }
 };
