@@ -364,6 +364,25 @@ return [
             
 
         ],
+        [
+            'text'    => 'users',
+            'icon'    => 'fas fa-fw fa-user',
+            
+            'submenu' => [
+                [
+                    'text' => 'List',
+                    'url'  => 'user/list',
+                    'icon' => 'fas fa-list',
+                ],
+                [
+                    'text'    => 'Create',
+                    'url'     => 'user/create',
+                    'icon'    => 'fas fa-plus',
+                ],  
+            ],
+            
+
+        ],
         ['header' => 'labels'],
         [
             'text'       => 'important',

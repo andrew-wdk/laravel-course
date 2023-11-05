@@ -41,7 +41,7 @@
                 </div>
                 <div class="form-group col-md-12">
                     <label for="telephone-no.">الرقم الشخصى</label>
-                    <input type="text" name="" id="telephone-no" class="form-control" pattern="^0[\d]{10}" required min-length="11" max-length="11" placeholder="أدخل 11 رقم">
+                    <input type="text" name="telephone-no" id="telephone-no" class="form-control" pattern="^0[\d]{10}" required min-length="11" max-length="11" placeholder="أدخل 11 رقم">
                     <!-- I want to add here to accept zero's -->
                 </div>
                 <div class="form-group col-md-12">
