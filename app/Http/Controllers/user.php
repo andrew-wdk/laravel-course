@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Post;
-use App\Models\User;
+use App\Models\User as ModelsUser;
+use Illuminate\Foundation\Auth\User as AuthUser;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class user extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +16,9 @@ class PostController extends Controller
         // gets data from database
         // associative array key = posts , value = data
         // $data['posts'] = Post::get();
-        $posts = Post::get();
+        $users= ModelsUser::get();
 
-        return view('admin.post.index', compact('posts'));
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -27,13 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        // this was the simple way of defining some users 
-        // $users = ['roufeail', 'marina', 'micheal', 'andrew'];
-        // to get a specific columns from the table
-        $users = User::select(['id', 'name'])->get();
-
-        // key users value = data from database
-        return view('admin.post.create', compact('users'));
+        //
     }
 
     /**
@@ -41,10 +34,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-
-        // dd($request->all());
-
-        Post::create($request->all());
+        ModelsUser::create($request->all());
 
         // $post = new Post();
         // $post->title = $request->title;

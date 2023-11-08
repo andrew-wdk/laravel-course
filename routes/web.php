@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\PostController;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -31,7 +32,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('post', PostController::class);
 
-Route::view('user/create', 'users.create');
+Route::resource('user/create', User::class);
 
 Route::view('event/create', 'admin.event.create', [
     'users' => ['roufeail', 'marina', 'micheal', 'andrew']

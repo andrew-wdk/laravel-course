@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-<form action="{{url('user/create')}}" method="POST">
+<form action="{{route('ModelsUser.store')}}" method="POST">
     {{csrf_field()}}
     <div class="card card-primary">
         <div class="card-body">

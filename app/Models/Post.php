@@ -27,7 +27,7 @@ class Post extends Model
         2 => 'note',
         3 => 'news',
     ];
-
+    // the accessor and mutator function to give numbers to database and get the text instead 
     public function type(): Attribute
     {
         return Attribute::make(
