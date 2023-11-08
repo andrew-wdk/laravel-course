@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\UserController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -24,17 +26,20 @@ Route::get('/', function () {
 Route::get('/login', function() { return 'comming-soon';});
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route::get('post', [PostController::class, 'index']);
+// Route::get('post', [PostController::class, 'index'])->name('post.index');
 // Route::get('post/create', [PostController::class, 'create']);
 // Route::post('post', [PostController::class, 'store'])->name('post.store');
 
-Route::resource('post', PostController::class);
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
+// Route::prefix('admin')->name('admin.')->group(function() {
 
-Route::resource('user/create', User::class);
+    // Route::post('post/deactivate', [PostController::class, 'deactivate'])->name('post.deactivate');
+    Route::resource('post', PostController::class);
 
-Route::view('event/create', 'admin.event.create', [
-    'users' => ['roufeail', 'marina', 'micheal', 'andrew']
-]);
-Route::view('user/list', 'users.index');
+    Route::resource('user', UserController::class);
+
+    Route::resource('event', EventController::class);
+
+});

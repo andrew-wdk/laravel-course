@@ -12,11 +12,11 @@
                     <label for="start-date " style="font-family:cursive;"> start-date</label>
                     <input type="date" name="st-date" id="sd" class="form-control" required>
                 </div>
-                
+
                 <div class="form-group col-6">
                 <span class="fa fa-calendar-week"></span>
                     <label for="end-date" style="font-family:cursive;"> end-date</label>
-                    <input name="end-date" id="ed" type="date" class="form-control"  required>
+                    <input name="end_date" id="ed" type="date" class="form-control"  required>
                 </div>
             </div>
             <div class="row">
@@ -57,7 +57,7 @@
                     <label for="notes" style="font-family:cursive;">Notes</label>
                     <textarea name="notes" id="notes" class="form-control" rows="3"></textarea>
                 </div>
-                
+
             </div>
         </div>
         <div class="card-footer">
