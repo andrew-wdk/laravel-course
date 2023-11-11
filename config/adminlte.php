@@ -354,6 +354,11 @@ return [
             'icon'    => 'fa fa-calendar',
             
             'submenu' => [
+                [
+                    'text' => 'List',
+                    'url'  => 'event/index',
+                    'icon' => 'fas fa-list',
+                ],
                 
                 [
                     'text'    => 'Create',

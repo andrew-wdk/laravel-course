@@ -3,14 +3,15 @@
 
 
 @section('content')
+
 <form>
     <div class="card card-primary">
         <div class="card-body">
             <div class="row">
-                <div class="form-group col-6">
+                <div class="form-group col-12 col-md-6">
                 <span class="fa fa-calendar-week"></span>
                     <label for="start-date " style="font-family:cursive;"> start-date</label>
-                    <input type="date" name="st-date" id="sd" class="form-control" required>
+                    <input type="date" name="st-date" id="startdate" class="form-control" required>
                 </div>
 
                 <div class="form-group col-6">
@@ -20,15 +21,15 @@
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col-6">
+                <div class="form-group col-12 col-md-6">
                 <span class="fa fa-clock"></span>
                     <label for="departure-time" style="font-family:cursive;"> departure-time</label>
-                    <input class="form-control" type="time" name="dt" id="dep-time" >
+                    <input class="form-control" type="time" name="deptime" id="dep-time" >
                     </div>
-                    <div class="form-group col-6">
+                    <div class="form-group col-12 col-md-6">
                     <span class="fa fa-clock"></span>
                     <label for="return-time" style="font-family:cursive;"> return-time</label>
-                    <input  class="form-control" type="time" name="rt" id="ret-time" >
+                    <input  class="form-control" type="time" name="returntime" id="ret-time" >
                     </div>
                 </div>
                 <div class="row">
@@ -43,26 +44,36 @@
                     </select>
                 </div>
                 </div>
+
+                <div class="row">
+                <div class="col-12">
+                    <span class="fa fa-wallet"></span>
+                    <label for="fee" style="font-family:cursive;"> Event Fees </label>
+                    <input class="form-control mb-2" type="text" name="fee" id="fee" >
+                </div>
+                </div>
+
+
                 <div class="row">
                 <div class="col-12">
                     <span class="fa fa-map-pin"></span>
                     <label for="location" style="font-family:cursive;">Location</label>
-                    <input class="form-control" type="text" name="location" id="loc" placeholder="Enter the Event Location"
-                      style="border-radius:7px; border: 2px solid;"  >
-                    </select>
+                    <input class="form-control mb-3" type="text" name="location" id="location" placeholder="Enter the Event Location">
                 </div>
                 </div>
                 <div>
                 <span class="fa fa-comments" style="color:yellow;"></span>
-                    <label for="notes" style="font-family:cursive;">Notes</label>
+                    <label for="notes" style="font-family:cursive;" id="note">Notes</label>
                     <textarea name="notes" id="notes" class="form-control" rows="3"></textarea>
                 </div>
             </div>
         </div>
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary" style="background-color:black; border:none;
+            
+            <button type="submit" class="btn btn-primary bg-black " id="button1" style="border:none;
              border-radius:8px; font-family:cursive; margin-left:450px;">
             Submit</button>
+              
         </div>
     </div>
 </form>
