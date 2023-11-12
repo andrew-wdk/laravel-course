@@ -11,25 +11,25 @@
                 <div class="form-group col-12 col-md-6">
                 <span class="fa fa-calendar-week"></span>
                     <label for="start-date " style="font-family:cursive;"> start-date</label>
-                    <input type="date" name="st-date" id="startdate" class="form-control" required>
+                    <input type="date" name="st_date" id="start_date" class="form-control" required>
                 </div>
 
                 <div class="form-group col-6">
                 <span class="fa fa-calendar-week"></span>
                     <label for="end-date" style="font-family:cursive;"> end-date</label>
-                    <input name="end_date" id="ed" type="date" class="form-control"  required>
+                    <input name="end_date" id="end_date" type="date" class="form-control"  required>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-12 col-md-6">
                 <span class="fa fa-clock"></span>
                     <label for="departure-time" style="font-family:cursive;"> departure-time</label>
-                    <input class="form-control" type="time" name="deptime" id="dep-time" >
+                    <input class="form-control" type="time" name="departure_time" id="departure_time" >
                     </div>
                     <div class="form-group col-12 col-md-6">
                     <span class="fa fa-clock"></span>
                     <label for="return-time" style="font-family:cursive;"> return-time</label>
-                    <input  class="form-control" type="time" name="returntime" id="ret-time" >
+                    <input  class="form-control" type="time" name="return_time" id="return_time" >
                     </div>
                 </div>
                 <div class="row">
@@ -49,7 +49,7 @@
                 <div class="col-12">
                     <span class="fa fa-wallet"></span>
                     <label for="fee" style="font-family:cursive;"> Event Fees </label>
-                    <input class="form-control mb-2" type="text" name="fee" id="fee" >
+                    <input class="form-control mb-2" type="text" name="event_fees" id="event_fees" >
                 </div>
                 </div>
 
@@ -63,7 +63,7 @@
                 </div>
                 <div>
                 <span class="fa fa-comments" style="color:yellow;"></span>
-                    <label for="notes" style="font-family:cursive;" id="note">Notes</label>
+                    <label for="notes" style="font-family:cursive;" id="notes">Notes</label>
                     <textarea name="notes" id="notes" class="form-control" rows="3"></textarea>
                 </div>
             </div>

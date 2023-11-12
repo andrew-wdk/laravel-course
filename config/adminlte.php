@@ -336,12 +336,12 @@ return [
             'submenu' => [
                 [
                     'text' => 'List',
-                    'url'  => 'post',
+                    'url'  => 'admin/post/index',
                     'icon' => 'fas fa-list',
                 ],
                 [
                     'text'    => 'Create',
-                    'url'     => 'post/create',
+                    'url'     => 'admin/post/create',
                     'icon'    => 'fas fa-plus',
                 ],  
             ],
@@ -356,13 +356,13 @@ return [
             'submenu' => [
                 [
                     'text' => 'List',
-                    'url'  => 'event/index',
+                    'url'  => 'admin/event/index',
                     'icon' => 'fas fa-list',
                 ],
                 
                 [
                     'text'    => 'Create',
-                    'url'     => 'event/create',
+                    'url'     => 'admin/event/create',
                     'icon'    => 'fas fa-plus',
                 ],  
             ],
@@ -376,12 +376,12 @@ return [
             'submenu' => [
                 [
                     'text' => 'List',
-                    'url'  => 'user/list',
+                    'url'  => 'admin/user/index',
                     'icon' => 'fas fa-list',
                 ],
                 [
                     'text'    => 'Create',
-                    'url'     => 'user/create',
+                    'url'     => 'admin/user/create',
                     'icon'    => 'fas fa-plus',
                 ],  
             ],

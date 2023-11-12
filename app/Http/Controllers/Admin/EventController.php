@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
+use App\Models\User;
 use App\Models\Event;
 use Illuminate\Http\Request;
 
@@ -13,7 +15,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        return view('admin.event.index');
+        $events = Event::get();
+        return  view('admin.event.create', compact('events'));
     }
 
     /**
@@ -21,7 +24,8 @@ class EventController extends Controller
      */
     public function create()
     {
-        return  view('admin.event.create', compact('events'));
+        $users = User::select(['id', 'name'])->get();
+        return  view('admin.event.create', compact('users'));
     }
 
     /**
@@ -29,7 +33,7 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        $event = Event::create($request->all());
+         Event::create($request->all());
 
         return redirect()->route('admin.event.index');
     }
@@ -39,7 +43,7 @@ class EventController extends Controller
      */
     public function show(string $id)
     {
-        return view('admin.event.show');
+        //
     }
 
     /**
