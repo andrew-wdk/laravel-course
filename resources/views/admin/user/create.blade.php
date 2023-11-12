@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-<form action="{{route('admin.user.store')}}" method="POST">
+<form id="add_user" action="{{route('ModelsUser.store')}}" method="POST">
     {{csrf_field()}}
     <div class="card card-primary">
         <div class="card-body">
@@ -110,5 +110,33 @@
     $(document).ready(function() {
         $('.select2').select2();
     });
+</script>
+<script>
+    const Swal = require('sweetalert2');
+    const form = document.getElementById('add_user');
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+    });
+    Swal.fire({
+            title: 'Submitting your data...',
+            html: 'Please wait while we process your request.',
+            didOpen: () => {
+                Swal.showLoading()
+            }
+        });
+</script>
+<script>
+    const Swal = require('sweetalert2');
+    const form = document.getElementById('add_user');
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+    });
+    Swal.fire({
+            title: 'Submitting your data...',
+            html: 'Please wait while we process your request.',
+            didOpen: () => {
+                Swal.showLoading()
+            }
+        });
 </script>
 @stop
