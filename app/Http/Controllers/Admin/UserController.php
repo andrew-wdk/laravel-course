@@ -16,9 +16,9 @@ class UserController extends Controller
         // gets data from database
         // associative array key = posts , value = data
         // $data['posts'] = Post::get();
-        $users= User::get();
+        $users = User::get()->with('visits');
 
-        return view('admin.users.index', compact('users'));
+        return view('admin.user.index', compact('users'));
     }
 
     /**

@@ -17,7 +17,14 @@ class PostController extends Controller
         // gets data from database
         // associative array key = posts , value = data
         // $data['posts'] = Post::get();
-        $posts = Post::get();
+        $posts = Post::query()
+            ->where('status', 1)
+            ->where('expires_at', '>', now())
+            ->get();
+
+        // dd($posts);
+
+
 
         return view('admin.post.index', compact('posts'));
     }

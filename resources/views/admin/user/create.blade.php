@@ -102,7 +102,7 @@
 @stop
 
 @section('css')
-
+<link href="https://cdn.datatables.net/v/dt/dt-1.13.7/datatables.min.css" rel="stylesheet">
 @stop
 
 @section('js')
@@ -139,4 +139,5 @@
             }
         });
 </script>
+<script src="https://cdn.datatables.net/v/dt/dt-1.13.7/datatables.min.js"></script>
 @stop

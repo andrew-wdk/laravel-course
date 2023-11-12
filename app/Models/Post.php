@@ -22,12 +22,30 @@ class Post extends Model
         'expires_at',
     ];
 
+    public const STATUSES = [
+        0 => 'inactive',
+        1 => 'active',
+    ];
+
     public $types = [
         1 => 'important',
         2 => 'note',
         3 => 'news',
     ];
-    // the accessor and mutator function to give numbers to database and get the text instead 
+
+    public function status(): Attribute
+    {
+        return Attribute::make(
+            get: function(int $value) {
+                return Post::STATUSES[$value];
+            },
+            set: function(string $value) {
+                return array_flip(Post::STATUSES)[$value];
+            }
+        );
+    }
+
+    // the accessor and mutator function to give numbers to database and get the text instead
     public function type(): Attribute
     {
         return Attribute::make(

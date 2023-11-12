@@ -23,13 +23,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($posts ?? [] as $key => $post)
+                @foreach($users as $key => $user)
                     <tr>
                         <td>{{$key + 1}}</td>
-                        <td>{{$post->name}}</td>
-                        <td>{{$post->choosingsection}}</td>
-                        <td>{{$post->email}}</td>
-                        <td>{{$post->email_verified_at}}</td>
+                        <td>{{$user->name}}</td>
+                        <td>{{$user->choosingsection}}</td>
+                        <td>{{$user->email}}</td>
+                        <td>{{$user->email_verified_at}}</td>
                         <td>
                             <div class="row">
                                 <button class="btn btn-sm btn-primary mr-1">
