@@ -336,7 +336,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'List',
-                    'url'  => 'admin/post',
+                    'url'  => 'admin/post/create',
                     'icon' => 'fas fa-list',
                 ],
                 [
@@ -354,10 +354,15 @@ return [
             'icon'    => 'fa fa-calendar',
             
             'submenu' => [
+                [
+                    'text' => 'List',
+                    'url'  => 'admin/event/index',
+                    'icon' => 'fas fa-list',
+                ],
                 
                 [
                     'text'    => 'Create',
-                    'url'     => 'event/create',
+                    'url'     => 'admin/event/create',
                     'icon'    => 'fas fa-plus',
                 ],  
             ],
@@ -371,7 +376,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'List',
-                    'url'  => 'admin/user',
+                    'url'  => 'admin/user/index',
                     'icon' => 'fas fa-list',
                 ],
                 [
