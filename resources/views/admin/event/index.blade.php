@@ -14,21 +14,29 @@
                 <thead>
                     <tr>
                         <th style="width: 10px">#</th>
-                        <th>Title</th>
-                        <th>Type</th>
-                        <th>Status</th>
-                        <th>Publish at</th>
+                        <th>start-date</th>
+                        <th>end-date</th>
+                        <th>departure-time </th>
+                        <th>return-time</th>
+                        <th>Leader-ID</th>
+                        <th>Location</th>
+                        <th>Notes</th>
+                        <th>Event-fees</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($posts ?? [] as $key => $post)
+                @foreach($events ?? [] as $key => $event)
                     <tr>
                         <td>{{$key + 1}}</td>
-                        <td>{{$post->title}}</td>
-                        <td>{{$post->type}}</td>
-                        <td>{{$post->status}}</td>
-                        <td>{{$post->publish_at}}</td>
+                        <td>{{$event->start_date}}</td>
+                        <td>{{$event->end_date}}</td>
+                        <td>{{$event->departure_time}}</td>
+                        <td>{{$event->return_time}}</td>
+                        <td>{{$event->leader_id}}</td>
+                        <td>{{$event->event_fees}}</td>
+                        <td>{{$event->location}}</td>
+                        <td>{{$event->notes}}</td>
                         <td>
                             <div class="row">
                                 <button class="btn btn-sm btn-primary mr-1">
