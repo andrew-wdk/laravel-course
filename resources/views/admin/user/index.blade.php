@@ -28,7 +28,7 @@
                         <td>{{$key + 1}}</td>
                         <td>{{$user->name}}</td>
                         <td>{{$user->choosingsection}}</td>
-                        <td>{{$user->email}}</td>
+                        <td>{{$user->lastVisit?->date}}</td>
                         <td>{{$user->email_verified_at}}</td>
                         <td>
                             <div class="row">

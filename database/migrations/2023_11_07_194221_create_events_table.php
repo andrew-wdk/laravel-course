@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('events', function (Blueprint $table) {
+            $table->id();
             $table->bigInteger('leader_id');
             $table->date('start_date');
             $table->date('end_date');
@@ -20,6 +21,7 @@ return new class extends Migration
             $table->string('event_fees');
             $table->string('location');
             $table->text('notes');
+            $table->timestamps();
         });
     }
 

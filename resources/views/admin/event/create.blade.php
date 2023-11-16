@@ -3,15 +3,15 @@
 
 
 @section('content')
-
-<form>
+<form action="{{route('admin.event.store')}}" method="POST">
+{{csrf_field()}}
     <div class="card card-primary">
         <div class="card-body">
             <div class="row">
                 <div class="form-group col-12 col-md-6">
                 <span class="fa fa-calendar-week"></span>
                     <label for="start-date " style="font-family:cursive;"> start-date</label>
-                    <input type="date" name="st_date" id="start_date" class="form-control" required>
+                    <input type="date" name="start_date" id="sd" class="form-control" required>
                 </div>
 
                 <div class="form-group col-6">
@@ -38,8 +38,8 @@
                     <label for="leader_id" style="font-family:cursive;">Leader-ID</label>
                     <select name="leader_id" id="leader_id" class="form-control">
                         <option value="">Select</option>
-                        @foreach($users ?? [] as $id => $name)
-                            <option value="{{$id}}">{{$name}}</option>
+                        @foreach($users ?? [] as $user)
+                            <option value="{{$user->id}}">{{$user->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -69,11 +69,11 @@
             </div>
         </div>
         <div class="card-footer">
-            
+
             <button type="submit" class="btn btn-primary bg-black " id="button1" style="border:none;
              border-radius:8px; font-family:cursive; margin-left:450px;">
             Submit</button>
-              
+
         </div>
     </div>
 </form>

@@ -15,8 +15,11 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::get();
-        return  view('admin.event.create', compact('events'));
+        $events = Event::with('users')->get();
+
+        dd($events);
+
+        return  view('admin.event.index', compact('events'));
     }
 
     /**
@@ -33,7 +36,9 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-         Event::create($request->all());
+        $event = Event::create($request->all());
+
+        $event->users()->attach(User::pluck('id'));
 
         return redirect()->route('admin.event.index');
     }

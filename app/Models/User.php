@@ -27,6 +27,7 @@ class User extends Authenticatable
         'address',
         'father',
         'otherinput',
+        'servant_id',
     ];
 
     /**
@@ -52,5 +53,30 @@ class User extends Authenticatable
     public function visits()
     {
         return $this->hasMany(Visit::class, 'student_id');
+    }
+
+    public function lastVisit()
+    {
+        return $this->hasOne(Visit::class, 'student_id')->latest();
+    }
+
+    public function followUpServant()
+    {
+        return $this->belongsTo(User::class, 'servant_id');
+    }
+
+    public function visitedBy()
+    {
+        return $this->belongsToMany(User::class, 'visits', 'student_id', 'servant_id');
+    }
+
+    public function studentsVisited()
+    {
+        return $this->belongsToMany(User::class, 'visits', 'servant_id', 'student_id');
+    }
+
+    public function events()
+    {
+        return $this->belongsToMany(Event::class, 'event_user', 'user_id', 'event_id');
     }
 }
