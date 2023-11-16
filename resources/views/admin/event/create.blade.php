@@ -11,7 +11,7 @@
                 <div class="form-group col-12 col-md-6">
                 <span class="fa fa-calendar-week"></span>
                     <label for="start-date " style="font-family:cursive;"> start-date</label>
-                    <input type="date" name="st_date" id="start_date" class="form-control" required>
+                    <input type="date" name="start_date" id="start_date" class="form-control" required>
                 </div>
 
                 <div class="form-group col-6">
