@@ -35,7 +35,9 @@
                                     <span class="fa fa-eye"></span>
                                 </button>
                                 <button class="btn btn-sm btn-success mr-1">
-                                    <span class="fa fa-edit"></span>
+                                    <a href="{{route('admin.post.edit', $post->id)}}">
+                                        <span class="fa fa-edit"></span>
+                                    </a>
                                 </button>
                                 <button class="btn btn-sm btn-danger mr-1">
                                     <span class="fa fa-trash"></span>

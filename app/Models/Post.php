@@ -27,7 +27,7 @@ class Post extends Model
         1 => 'active',
     ];
 
-    public $types = [
+    public const TYPES = [
         1 => 'important',
         2 => 'note',
         3 => 'news',

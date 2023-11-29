@@ -3,11 +3,11 @@
 @section('title', 'Posts')
 
 @section('content_header')
-    <h1>Create Post</h1>
+    <h1>Edit Post</h1>
 @stop
 
 @section('content')
-<form action="{{route('admin.post.store')}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('admin.post.update', $post->id)}}" method="POST">
     {{csrf_field()}}
     <div class="card card-primary">
         <div class="card-body">
@@ -15,7 +15,7 @@
                 <div class="form-group col-md-12">
                     <label for="title">Title</label>
                     <input type="text" name="title" id="title" class="form-control"
-                        value="{{old('title')}}" required
+                        value="{{old('title', $post->title)}}" required
                     >
                     @error('title')
                         <div class="text-danger"> {{$errors->first('title')}} </div>
@@ -33,9 +33,6 @@
                             <label class="custom-file-label" for="attachment">Choose file</label>
                         </div>
                     </div>
-                    @error('attachment')
-                        <div class="text-danger"> {{$errors->first('attachment')}} </div>
-                    @enderror
                 </div>
                 <div class="form-group col-md-6">
                     <label for="user_id">User</label>
@@ -45,9 +42,6 @@
                             <option value="{{$user->id}}">{{$user->name}}</option>
                         @endforeach
                     </select>
-                    @error('user_id')
-                        <div class="text-danger"> {{$errors->first('user_id')}} </div>
-                    @enderror
                 </div>
                 <div class="form-group col-md-6">
                     <label for="status">Status</label>
@@ -55,28 +49,19 @@
                         <option value="1">Active</option>
                         <option value="0">Inactive</option>
                     </select>
-                    @error('status')
-                        <div class="text-danger"> {{$errors->first('status')}} </div>
-                    @enderror
                 </div>
                 <div class="form-group col-md-6">
                     <label for="type">Type</label>
                     <select name="type" id="type" class="form-control">
-                        @foreach(App\Models\Post::TYPES as $type)
+                        @foreach((new App\Models\Post())->types as $type)
                             <option value="{{$type}}">{{$type}}</option>
                         @endforeach
                     </select>
-                    @error('type')
-                        <div class="text-danger"> {{$errors->first('type')}} </div>
-                    @enderror
                 </div>
                 <div class="form-group col-md-6">
                     <label for="publish_at">Publish at</label>
                     <input name="publish_at" id="publish_at" type="datetime-local" class="form-control">
                 </div>
-                @error('publish_at')
-                    <div class="text-danger"> {{$errors->first('publish_at')}} </div>
-                @enderror
             </div>
         </div>
         <div class="card-footer">
