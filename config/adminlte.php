@@ -370,7 +370,7 @@ return [
 
         ],
         [
-            'text'    => 'users',
+            'text'    => 'Users',
             'icon'    => 'fas fa-fw fa-user',
             
             'submenu' => [
@@ -385,9 +385,26 @@ return [
                     'icon'    => 'fas fa-plus',
                 ],  
             ],
-            
-
+        ],  
+        [
+            'text'    => 'Meeting',
+            'icon'    => 'fas fa-clock',
+                
+            'submenu' => [
+                [
+                'text' => 'List',
+                'url'  => 'admin/meeting/index',
+                'icon' => 'fas fa-list',
+                ],
+                [
+                'text'    => 'Create',
+                'url'     => 'admin/meeting/create',
+                'icon'    => 'fas fa-plus',
+                ],  
+            ],
         ],
+        
+        
         ['header' => 'labels'],
         [
             'text'       => 'important',

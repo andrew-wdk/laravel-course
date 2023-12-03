@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\MeetingController as AdminMeetingController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\MeetingController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -41,5 +43,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     Route::resource('user', UserController::class);
 
     Route::resource('event', EventController::class);
+
+    Route::resource('meeting', AdminMeetingController::class);
 
 });
