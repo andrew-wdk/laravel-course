@@ -10,24 +10,24 @@
             <div class="row">
                 <div class="form-group col-12 col-md-6">
                 <span class="fa fa-calendar-week"></span>
-                    <label for="Meeting-date" style="font-family:cursive;"> Meeting-date</label>
-                    <input type="date" name="meeting-date" id="sd" class="form-control" required>
+                    <label for="meeting-date" style="font-family:cursive;"> Meeting date</label>
+                    <input type="date" name="meeting_date" id="meeting-date" class="form-control" required>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-12 col-md-6">
                 <span class="fa fa-clock"></span>
                     <label for="Meeting-time" style="font-family:cursive;">Meeting time</label>
-                    <input class="form-control" type="time" name="meeting-time" id="meeting-time"  value="12:00" >
+                    <input class="form-control" type="time" name="meeting_time" id="meeting-time"  value="12:00" >
                 </div>
             </div>
                 <div class="row">
                 <div class="form-group col-12">
                 <span class="fa fa-user"></span>
-                    <label for="Attendance" style="font-family:cursive;">Attendance</label><br>
+                    <label style="font-family:cursive;">Attendance</label><br>
                         @foreach($users ?? [] as $user)
-                            <input name="Attendance" id="Attendance" class="form-check-label" type="checkbox" value="{{$user->id}}">
-                            <label for="{{$user->id}}">{{$user->name}}</label><br>
+                            <input name="attendance[]" id="attendance{{$user->id}}" class="form-check-label" type="checkbox" value="{{$user->id}}">
+                            <label for="attendance{{$user->id}}">{{$user->name}}</label><br>
                         @endforeach
                 </div>
                 </div>

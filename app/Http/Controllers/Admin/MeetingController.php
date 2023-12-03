@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\user;
 use App\Models\Meeting;
-use App\Models\User as ModelsUser;
+use App\Models\User;
 use Illuminate\Foundation\Auth\User as AuthUser;
 use Illuminate\Http\Request;
 
@@ -24,7 +23,7 @@ class MeetingController extends Controller
      */
     public function create()
     {
-        $users = ModelsUser::select(['id', 'name'])->get();
+        $users = User::select(['id', 'name'])->get();
         return  view('admin.meeting.create', compact('users'));
     }
 
@@ -35,7 +34,7 @@ class MeetingController extends Controller
     {
         $meeting = Meeting::create($request->all());
 
-        $meeting->users()->attach(ModelsUser::pluck('id'));
+        $meeting->attendance()->attach($request->attendance ?? []);
 
         return redirect()->route('admin.meeting.index');
     }
