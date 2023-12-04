@@ -1,11 +1,11 @@
 <?php
 
 use App\Http\Controllers\Admin\EventController;
-use App\Http\Controllers\Admin\MeetingController as AdminMeetingController;
+use App\Http\Controllers\Admin\MeetingController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\MeetingController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -42,10 +42,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     // Route::post('post/deactivate', [PostController::class, 'deactivate'])->name('post.deactivate');
     Route::resource('post', PostController::class);
 
-    Route::resource('user', UserController::class);
+    Route::resource('user', UserController::class)->middleware('role:admin|servant');
 
     Route::resource('event', EventController::class);
 
-    Route::resource('meeting', AdminMeetingController::class);
+    Route::resource('meeting', MeetingController::class);
 
+    Route::resource('role', RoleController::class);
 });

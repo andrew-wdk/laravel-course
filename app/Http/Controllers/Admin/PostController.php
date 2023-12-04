@@ -11,6 +11,14 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     /**
+     * Create the controller instance.
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(Post::class, 'post');
+    }
+    
+    /**
      * Display a listing of the resource.
      */
     public function index()
@@ -18,14 +26,11 @@ class PostController extends Controller
         // gets data from database
         // associative array key = posts , value = data
         // $data['posts'] = Post::get();
+
         $posts = Post::query()
             ->where('status', 1)
             ->where('expires_at', '>', now())
             ->get();
-
-        // dd($posts);
-
-
 
         return view('admin.post.index', compact('posts'));
     }
@@ -49,8 +54,7 @@ class PostController extends Controller
      */
     public function store(PostStoreRequest $request)
     {
-
-        Post::create($request->all());
+        Post::create($request->validated());
 
         // $post = new Post();
         // $post->title = $request->title;
@@ -58,14 +62,13 @@ class PostController extends Controller
 
         // $post->save();
 
-
-        return redirect(url('post'));
+        return redirect()->route('admin.post.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Post $post)
     {
         //
     }
@@ -73,17 +76,15 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Post $post)
     {
-        $post = Post::find($id);
-
         return view('admin.post.edit', compact('post'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Post $post)
     {
         //
     }
@@ -91,7 +92,7 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Post $post)
     {
         //
     }

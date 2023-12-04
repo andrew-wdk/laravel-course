@@ -307,119 +307,98 @@ return [
             'text' => 'search',
         ],
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text'    => 'Roles',
+            'icon'    => 'fas fa-fw fa-bullhorn',
+            'can'     => 'roles_view',
+
+            'submenu' => [
+                [
+                    'text' => 'List',
+                    'url'  => 'admin/role',
+                    'icon' => 'fas fa-list',
+                ],
+                [
+                    'text'    => 'Create',
+                    'url'     => 'admin/role/create',
+                    'icon'    => 'fas fa-plus',
+                    'can'     => 'roles_create',
+                ],
+            ],
         ],
         [
             'text'    => 'Posts',
             'icon'    => 'fas fa-fw fa-bullhorn',
-            
+            'can'     => 'posts_view',
+
             'submenu' => [
                 [
                     'text' => 'List',
-                    'url'  => 'admin/post/create',
+                    'url'  => 'admin/post',
                     'icon' => 'fas fa-list',
                 ],
                 [
                     'text'    => 'Create',
                     'url'     => 'admin/post/create',
                     'icon'    => 'fas fa-plus',
-                ],  
+                    'can'     => 'posts_create',
+                ],
             ],
-            
-
         ],
-
         [
             'text'    => 'Events',
             'icon'    => 'fa fa-calendar',
-            
+            'can'     => 'events_view',
+
             'submenu' => [
                 [
                     'text' => 'List',
-                    'url'  => 'admin/event/index',
+                    'url'  => 'admin/event',
                     'icon' => 'fas fa-list',
                 ],
-                
                 [
                     'text'    => 'Create',
                     'url'     => 'admin/event/create',
                     'icon'    => 'fas fa-plus',
-                ],  
+                    'can'     => 'events_create',
+                ],
             ],
-            
-
         ],
         [
             'text'    => 'Users',
             'icon'    => 'fas fa-fw fa-user',
-            
+            'can'     => 'users_view',
             'submenu' => [
                 [
                     'text' => 'List',
-                    'url'  => 'admin/user/index',
+                    'url'  => 'admin/user',
                     'icon' => 'fas fa-list',
                 ],
                 [
                     'text'    => 'Create',
                     'url'     => 'admin/user/create',
                     'icon'    => 'fas fa-plus',
-                ],  
+                    'can'     => 'users_create',
+                ],
             ],
-        ],  
+        ],
         [
             'text'    => 'Meeting',
             'icon'    => 'fas fa-clock',
-                
+            'can'     => 'meetings_view',
+
             'submenu' => [
                 [
-                'text' => 'List',
-                'url'  => 'admin/meeting/index',
-                'icon' => 'fas fa-list',
+                    'text' => 'List',
+                    'url'  => 'admin/meeting/index',
+                    'icon' => 'fas fa-list',
                 ],
                 [
-                'text'    => 'Create',
-                'url'     => 'admin/meeting/create',
-                'icon'    => 'fas fa-plus',
-                ],  
+                    'text'    => 'Create',
+                    'url'     => 'admin/meeting/create',
+                    'icon'    => 'fas fa-plus',
+                    'can'     => 'meetings_create',
+                ],
             ],
-        ],
-        
-        
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
         ],
     ],
 

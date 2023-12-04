@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -13,6 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', User::class);
         // gets data from database
         // associative array key = posts , value = data
         // $data['posts'] = Post::get();
@@ -26,7 +28,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.user.create');
+        $roles = Role::pluck('name', 'id');
+        return view('admin.user.create', compact('roles'));
     }
 
     /**
@@ -34,14 +37,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        User::create($request->all());
+        $user = User::create($request->all());
+
+        $user->assignRole($request->role);
 
         // $post = new Post();
         // $post->title = $request->title;
         // $post->body = $request->body;
 
         // $post->save();
-
 
         return redirect(url('post'));
     }
