@@ -17,7 +17,7 @@ class PostController extends Controller
     {
         $this->authorizeResource(Post::class, 'post');
     }
-    
+
     /**
      * Display a listing of the resource.
      */
@@ -54,7 +54,11 @@ class PostController extends Controller
      */
     public function store(PostStoreRequest $request)
     {
-        Post::create($request->validated());
+        $post = Post::create($request->validated());
+
+        if($request->file('image')) {
+            $post->addMediaFromRequest('image')->toMediaCollection('image');
+        }
 
         // $post = new Post();
         // $post->title = $request->title;
@@ -86,7 +90,12 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $post->update($request->validated());
+
+        if($request->file('image')) {
+            $post->clearMediaCollection('image');
+            $post->addMediaFromRequest('image')->toMediaCollection('image');
+        }
     }
 
     /**

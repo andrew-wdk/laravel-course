@@ -3,14 +3,20 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
+    use InteractsWithMedia;
     use HasApiTokens;
     use HasFactory;
     use HasRoles;
@@ -32,6 +38,7 @@ class User extends Authenticatable
         'father',
         'otherinput',
         'servant_id',
+        'qrcode',
     ];
 
     /**
@@ -53,6 +60,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function qrcode(): Attribute
+    {
+        return Attribute::make(
+            get: function () {
+                $media = $this->getFirstMedia('qrcode') ?: $this->generateQRCode();
+                return $media->getFullUrl();
+            }
+        );
+    }
 
     public function visits()
     {
@@ -83,4 +100,24 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Event::class, 'event_user', 'user_id', 'event_id');
     }
+
+    public function generateQRCode()
+    {
+        $this->clearMediaCollection('qrcode');
+
+        $path = public_path($this->id . '.png');
+
+        $code = QrCode::size(300)->format('png')->errorCorrection('H');
+
+        // $code->merge(public_path('logo.png'), .3, true);
+
+        $code->generate($this->id, $path);
+
+        $image = $this->addMedia($path)->toMediaCollection('qrcode');
+
+        $this->load('media');
+
+        return $image;
+    }
+
 }

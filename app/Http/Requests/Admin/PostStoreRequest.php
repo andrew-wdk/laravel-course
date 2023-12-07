@@ -25,11 +25,12 @@ class PostStoreRequest extends FormRequest
         return [
             'title' => 'required|string|max:200',
             'body' => 'required',
-            'attachment' => 'file|mimes:pdf,png,jpg,svg|max:10240',
+            'attachment' => 'nullable|file|mimes:pdf,png,jpg,svg|max:10240',
             'user_id' => 'required|exists:users,id',
             'status' => 'required|integer|in:0,1',
             'type' => 'required|string|in:' . implode(',', Post::TYPES),
-            'publish_at' => 'date|after:' . today()
+            'publish_at' => 'nullable|date|after:' . today(),
+            'image' => 'nullable|image',
         ];
     }
 
