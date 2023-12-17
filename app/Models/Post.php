@@ -2,13 +2,18 @@
 
 namespace App\Models;
 
+use App\Traits\HasMediaAttributes;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Post extends Model
+class Post extends Model implements HasMedia
 {
+    use InteractsWithMedia;
     use HasFactory;
+    // use HasMediaAttributes;
 
     // protected $table = 'posts';
 
@@ -20,7 +25,12 @@ class Post extends Model
         'type',
         'publish_at',
         'expires_at',
+        // 'image',
     ];
+
+    // protected $media_attributes = [
+    //     'image[]',
+    // ];
 
     public const STATUSES = [
         0 => 'inactive',
@@ -50,10 +60,10 @@ class Post extends Model
     {
         return Attribute::make(
             get: function(int $value) {
-                return $this->types[$value];
+                return self::TYPES[$value];
             },
             set: function(string $value) {
-                return array_flip($this->types)[$value];
+                return array_flip(self::TYPES)[$value];
             }
         );
     }

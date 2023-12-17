@@ -39,28 +39,45 @@
                     <select name="user_id" id="user_id" class="form-control">
                         <option value="">Select</option>
                         @foreach($users ?? [] as $user)
-                            <option value="{{$user->id}}">{{$user->name}}</option>
+                            <option value="{{$user->id}}" @selected(old('user_id', $post->user_id) == $user->id)>
+                                {{$user->name}}
+                            </option>
                         @endforeach
                     </select>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="status">Status</label>
                     <select name="status" id="status" class="form-control">
-                        <option value="1">Active</option>
-                        <option value="0">Inactive</option>
+                        @foreach(App\Models\Post::STATUSES as $status)
+                            <option value="{{$status}}" @selected(old('status', $post->status) == $status)>
+                                {{$status}}
+                            </option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="type">Type</label>
                     <select name="type" id="type" class="form-control">
-                        @foreach((new App\Models\Post())->types as $type)
-                            <option value="{{$type}}">{{$type}}</option>
+                        @foreach(App\Models\Post::TYPES as $type)
+                            <option value="{{$type}}" @selected(old('type', $post->type) == $type)>
+                                {{$type}}
+                            </option>
                         @endforeach
                     </select>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="publish_at">Publish at</label>
                     <input name="publish_at" id="publish_at" type="datetime-local" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="image">image</label>
+                    <input name="image" id="image" type="file" class="form-control">
+                    @error('image')
+                        <div class="text-danger"> {{$errors->first('image')}} </div>
+                    @enderror
+                </div>
+                <div class="form-group col-md-6">
+                    <img src="{{$post->getFirstMediaUrl('image')}}" class="img-fluid">
                 </div>
             </div>
         </div>
