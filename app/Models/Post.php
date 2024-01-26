@@ -43,6 +43,11 @@ class Post extends Model implements HasMedia
         3 => 'news',
     ];
 
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function status(): Attribute
     {
         return Attribute::make(

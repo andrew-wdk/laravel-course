@@ -25,4 +25,9 @@ class Event extends Model
         return $this->belongsToMany(User::class);
         // return $this->belongsToMany(User::class, 'event_user', 'event_id', 'user_id');
     }
+
+    public function leader()
+    {
+        return $this->belongsTo(User::class,'leader_id');
+    }
 }

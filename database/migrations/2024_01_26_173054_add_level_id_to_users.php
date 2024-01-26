@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            // does we need this here or it is better to be null ??
-            $table->tinyInteger('account_type')->nullable();
+            $table->foreignId('level_id')->nullable()->constrained()->nullOnDelete();
         });
     }
 
@@ -23,8 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            // what do we need here as well ? or we can add dropConstrainedForeignId ??
-            $table->dropColumn('account_type');
+            $table->dropColumn('level_id');
         });
     }
 };

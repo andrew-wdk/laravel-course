@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->bigInteger('NationalID')->nullable();
-            $table->tinyInteger('choosingsection')->nullable();
+            
             $table->string('telephone-no')->nullable();
             $table->text('address')->nullable();
             $table->string('father')->nullable();

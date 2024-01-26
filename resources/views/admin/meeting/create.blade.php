@@ -7,6 +7,10 @@
 {{csrf_field()}}
     <div class="card card-primary">
         <div class="card-body">
+            <div class="form-group col-md-12">
+                <label for="name">الأسم</label>
+                <input type="text" name="name" id="name" class="form-control" required>
+            </div>
             <div class="row">
                 <div class="form-group col-12 col-md-6">
                 <span class="fa fa-calendar-week"></span>

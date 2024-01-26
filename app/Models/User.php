@@ -32,13 +32,21 @@ class User extends Authenticatable implements HasMedia
         'email',
         'password',
         'NationalID',
-        'choosingsection',
-        'telephone-no',
+        'phone',
         'address',
         'father',
-        'otherinput',
-        'servant_id',
+        'account_type',
+        'points',
+        'choosing_section',
+        'level_id',
         'qrcode',
+    ];
+
+
+    public const ACCOUNT_TYPE = [
+        0 => 'student',
+        1 => 'servant',
+        2 => 'honest'
     ];
 
     /**
@@ -81,10 +89,10 @@ class User extends Authenticatable implements HasMedia
         return $this->hasOne(Visit::class, 'student_id')->latest();
     }
 
-    public function followUpServant()
-    {
-        return $this->belongsTo(User::class, 'servant_id');
-    }
+    // public function followUpServant()
+    // {
+    //     return $this->belongsTo(User::class, 'servant_id');
+    // }
 
     public function visitedBy()
     {
@@ -99,6 +107,21 @@ class User extends Authenticatable implements HasMedia
     public function events()
     {
         return $this->belongsToMany(Event::class, 'event_user', 'user_id', 'event_id');
+    }
+
+    public function level()
+    {
+        return $this->belongsTo(Level::class);
+    }
+
+    public function servants()
+    {
+        return $this->belongsToMany(User::class, 'servant_student', 'servant_id', 'student_id');
+    }
+
+    public function leaderEvent()
+    {
+        return $this->hasMany(Event::class,'leader_id');
     }
 
     public function generateQRCode()
@@ -118,6 +141,18 @@ class User extends Authenticatable implements HasMedia
         $this->load('media');
 
         return $image;
+    }
+
+    public function accountType(): Attribute
+    {
+        return Attribute::make(
+            get: function(int $value) {
+                return User::ACCOUNT_TYPE[$value];
+            },
+            set: function(string $value) {
+                return array_flip(User::ACCOUNT_TYPE)[$value];
+            }
+        );
     }
 
 }
