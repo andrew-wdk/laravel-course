@@ -42,7 +42,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     // Route::post('post/deactivate', [PostController::class, 'deactivate'])->name('post.deactivate');
     Route::resource('post', PostController::class);
 
-    Route::resource('user', UserController::class)->middleware('role:admin|servant');
+    Route::resource('user', UserController::class);
 
     Route::resource('event', EventController::class);
 

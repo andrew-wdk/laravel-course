@@ -10,6 +10,7 @@ class Event extends Model
     use HasFactory;
 
     protected $fillable = [
+        'title',
         'start_date',
         'end_date',
         'departure_time',
@@ -22,8 +23,7 @@ class Event extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class);
-        // return $this->belongsToMany(User::class, 'event_user', 'event_id', 'user_id');
+        return $this->belongsToMany(User::class)->withPivot( 'created_at','updated_at')->withTimestamps();
     }
 
     public function leader()

@@ -7,6 +7,11 @@
 {{csrf_field()}}
     <div class="card card-primary">
         <div class="card-body">
+
+            <div class="col-lg-4 my-1 form-Roles">
+                <label class="form-label">Title</label>
+                <input type="text" class="form-control " name="title" required>
+            </div>
             <div class="row">
                 <div class="form-group col-12 col-md-6">
                 <span class="fa fa-calendar-week"></span>
@@ -64,7 +69,7 @@
                 <div>
                 <span class="fa fa-comments" style="color:yellow;"></span>
                     <label for="notes" style="font-family:cursive;" id="notes">Notes</label>
-                    <textarea name="notes" id="notes" class="form-control" rows="3"></textarea>
+                    <textarea name="notes" id="notes" class="form-control" rows="3" required></textarea>
                 </div>
             </div>
         </div>

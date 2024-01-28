@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password')->nullable();
             $table->bigInteger('phone')->nullable();
             $table->text('address')->nullable();
-            $table->bigInteger('NationalID')->nullable();
+            $table->bigInteger('nationalID')->nullable();
             $table->bigInteger('points')->nullable();
             $table->tinyInteger('choosing_section')->nullable();
             $table->string('father')->nullable();
