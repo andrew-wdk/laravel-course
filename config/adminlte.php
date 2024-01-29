@@ -389,7 +389,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'List',
-                    'url'  => 'admin/meeting/index',
+                    'url'  => 'admin/meeting',
                     'icon' => 'fas fa-list',
                 ],
                 [

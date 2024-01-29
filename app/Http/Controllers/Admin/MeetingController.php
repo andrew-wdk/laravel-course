@@ -16,6 +16,7 @@ class MeetingController extends Controller
     public function index()
     {
         $meetings = Meeting::orderByDesc('id')->get();
+
         return view('admin.meeting.index', compact('meetings'));
     }
 
@@ -45,7 +46,8 @@ class MeetingController extends Controller
      */
     public function show(Meeting $meeting)
     {
-        //
+        $meeting->with('attendance');
+        return  view('admin.meeting.show', compact('$meeting'));
     }
 
     /**
@@ -53,7 +55,10 @@ class MeetingController extends Controller
      */
     public function edit(Meeting $meeting)
     {
-        //
+        $data['meeting'] = $meeting->with('attendance');
+
+        $data['user'] = User::select(['id', 'name'])->get();
+        return  view('admin.meeting.edit', compact('data'));
     }
 
     /**
@@ -61,7 +66,10 @@ class MeetingController extends Controller
      */
     public function update(Request $request, Meeting $meeting)
     {
-        //
+
+        $meeting->update($request->all());
+        $meeting->attendance()->attach($request->attendance ?? []);
+        return redirect()->route('admin.meeting.index');
     }
 
     /**
@@ -69,7 +77,7 @@ class MeetingController extends Controller
      */
     public function destroy(Meeting $meeting)
     {
-        if($meeting) $meeting->delete();
+        if ($meeting) $meeting->delete();
         return redirect()->route('admin.meeting.index');
     }
 }
