@@ -15,7 +15,8 @@ class MeetingController extends Controller
      */
     public function index()
     {
-        //
+        $meetings = Meeting::orderByDesc('id')->get();
+        return view('admin.meeting.index', compact('meetings'));
     }
 
     /**
@@ -68,6 +69,7 @@ class MeetingController extends Controller
      */
     public function destroy(Meeting $meeting)
     {
-        //
+        if($meeting) $meeting->delete();
+        return redirect()->route('admin.meeting.index');
     }
 }

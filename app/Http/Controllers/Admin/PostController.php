@@ -103,7 +103,6 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-         $post = Post::find($post->id);
          if($post){
             $post->delete();
             $post->clearMediaCollection('image');

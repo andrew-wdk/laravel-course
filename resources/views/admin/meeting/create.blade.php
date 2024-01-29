@@ -8,7 +8,7 @@
     <div class="card card-primary">
         <div class="card-body">
             <div class="form-group col-md-12">
-                <label for="name">الأسم</label>
+                <label for="name">العنوان</label>
                 <input type="text" name="name" id="name" class="form-control" required>
             </div>
             <div class="row">

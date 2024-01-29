@@ -3,7 +3,7 @@
 @section('title', 'Posts')
 
 @section('content_header')
-    <h1>Posts</h1>
+    <h1>Meetings</h1>
 @endsection
 
 @section('content')
@@ -15,20 +15,18 @@
                     <tr>
                         <th style="width: 10px">#</th>
                         <th>Title</th>
-                        <th>Type</th>
-                        <th>Status</th>
-                        <th>Publish at</th>
+                        <th>meeting_time</th>
+                        <th>meeting_date</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($posts ?? [] as $key => $post)
+                @foreach($meetings ?? [] as $key => $meeting)
                     <tr>
                         <td>{{$key + 1}}</td>
-                        <td>{{$post->title}}</td>
-                        <td>{{$post->type}}</td>
-                        <td>{{$post->status}}</td>
-                        <td>{{$post->publish_at}}</td>
+                        <td>{{$meeting->name}}</td>
+                        <td>{{$meeting->meeting_time}}</td>
+                        <td>{{$meeting->meeting_date}}</td>
                         <td>
                             <div class="row">
                                 <button class="btn btn-sm btn-primary mr-1">
@@ -37,9 +35,11 @@
                                 <button class="btn btn-sm btn-success mr-1">
                                     <span class="fa fa-edit"></span>
                                 </button>
+                                {{ Form::open(['route' => ['admin.meeting.destroy',$meeting->id] ,'method' => 'DELETE' ,'class' => 'delete-form']) }}
                                 <button class="btn btn-sm btn-danger mr-1">
                                     <span class="fa fa-trash"></span>
                                 </button>
+                                {{ Form::close() }}
                             </div>
                         </td>
                     </tr>

@@ -65,9 +65,8 @@ class EventController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(String $id)
+    public function destroy(Event $event)
     {
-        $event = Event::find($id);
         if($event) $event->delete();
         return redirect()->route('admin.event.index');
     }
