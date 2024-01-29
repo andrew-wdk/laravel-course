@@ -103,6 +103,13 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+         $post = Post::find($post->id);
+         if($post){
+            $post->delete();
+            $post->clearMediaCollection('image');
+         }
+         return redirect()->route('admin.post.index');
+         
+
     }
 }

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Post;
 use App\Models\User;
 use App\Models\Event;
 use Illuminate\Http\Request;
@@ -66,8 +65,10 @@ class EventController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(String $id)
     {
-        //
+        $event = Event::find($id);
+        if($event) $event->delete();
+        return redirect()->route('admin.event.index');
     }
 }

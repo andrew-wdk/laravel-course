@@ -37,9 +37,13 @@
                                 <button class="btn btn-sm btn-success mr-1">
                                     <span class="fa fa-edit"></span>
                                 </button>
+                                <div class="mx-1">
+                                {{ Form::open(['route' => ['admin.event.destroy',$event->id] ,'method' => 'DELETE' ,'class' => 'delete-form']) }}
                                 <button class="btn btn-sm btn-danger mr-1">
                                     <span class="fa fa-trash"></span>
                                 </button>
+                                {{ Form::close() }}
+                            </div>
                             </div>
                         </td>
                     </tr>
