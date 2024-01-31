@@ -3,8 +3,8 @@
 
 
 @section('content')
-<form action="{{route('admin.meeting.update')}}" method="POST">
-{{csrf_field()}}
+{{ Form::open(['route' => ['admin.meeting.update',$resource->id],'method' => 'PATCH','files'=>'true','enctype'=>'multipart/form-data']) }}
+{{ Form::hidden('resource_id',$resource->id,['id'=>'resource_id','class' => 'form-control']) }}
     <div class="card card-primary">
         <div class="card-body">
             <div class="form-group col-md-12">
@@ -15,6 +15,7 @@
                 <div class="form-group col-12 col-md-6">
                 <span class="fa fa-calendar-week"></span>
                     <label for="meeting-date" style="font-family:cursive;"> Meeting date</label>
+                    
                     <input type="date" name="meeting_date" id="meeting-date" class="form-control" required>
                 </div>
             </div>
@@ -43,6 +44,7 @@
              border-radius:8px; font-family:cursive; margin-left:450px;">
             Submit</button>
         </div>
+        {{ Form::close() }}
     </div>
 </form>
 

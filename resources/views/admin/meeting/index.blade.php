@@ -30,16 +30,20 @@
                         <td>
                             <div class="row">
                                 <button class="btn btn-sm btn-primary mr-1">
-                                    <span class="fa fa-eye"></span>
+                                    <a href="{{route('admin.meeting.show', $meeting->id)}}">
+                                     <span class="fa fa-eye" style="color: black"></span>
+                                    </a>
                                 </button>
                                 <button class="btn btn-sm btn-success mr-1">
-                                    <span class="fa fa-edit"></span>
+                                    <a href="{{route('admin.meeting.edit', $meeting->id)}}">
+                                     <span class="fa fa-edit" style="color: black"></span>
+                                    </a>
                                 </button>
-                                {{ Form::open(['route' => ['admin.meeting.destroy',$meeting->id] ,'method' => 'DELETE' ,'class' => 'delete-form']) }}
                                 <button class="btn btn-sm btn-danger mr-1">
-                                    <span class="fa fa-trash"></span>
+                                    <a href="{{route('admin.meeting.destroy', $meeting->id)}}">
+                                     <span class="fa fa-trash" style="color: black"></span>
+                                    </a>
                                 </button>
-                                {{ Form::close() }}
                             </div>
                         </td>
                     </tr>

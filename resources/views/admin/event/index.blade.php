@@ -32,15 +32,21 @@
                         <td>
                             <div class="row">
                                 <button class="btn btn-sm btn-primary mr-1">
-                                    <span class="fa fa-eye"></span>
+                                    <a href="{{route('admin.event.show', $event->id)}}">
+                                     <span class="fa fa-eye" style="color: black"></span>
+                                    </a>
                                 </button>
                                 <button class="btn btn-sm btn-success mr-1">
-                                    <span class="fa fa-edit"></span>
+                                    <a href="{{route('admin.event.edit', $event->id)}}">
+                                     <span class="fa fa-edit" style="color: black"></span>
+                                    </a>
                                 </button>
                                 <div class="mx-1">
-                                {{ Form::open(['route' => ['admin.event.destroy',$event->id] ,'method' => 'DELETE' ,'class' => 'delete-form']) }}
+                               
                                 <button class="btn btn-sm btn-danger mr-1">
-                                    <span class="fa fa-trash"></span>
+                                    <a href="{{route('admin.event.destroy', $event->id)}}"> 
+                                     <span class="fa fa-trash" style="color: black"></span>
+                                    </a>
                                 </button>
                                 {{ Form::close() }}
                             </div>

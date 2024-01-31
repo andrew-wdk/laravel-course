@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-group col-md-12">
                     <label for="body">Body</label>
-                    <textarea name="body" id="body" class="form-control" rows="3" required>{{old('body')}}</textarea>
+                    <textarea name="body" id="body" class="form-control" rows="3" required value="{{old('body',$post->body)}}">{{ old('body', $post->body) }}</textarea>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="attachment">Attachment</label>

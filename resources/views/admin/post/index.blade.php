@@ -32,15 +32,19 @@
                         <td>
                             <div class="row">
                                 <button class="btn btn-sm btn-primary mr-1">
-                                    <span class="fa fa-eye"></span>
+                                    <a href="{{route('admin.post.show', $post->id)}}">
+                                     <span class="fa fa-eye" style="color: black"></span>
+                                    </a>
                                 </button>
                                 <button class="btn btn-sm btn-success mr-1">
                                     <a href="{{route('admin.post.edit', $post->id)}}">
-                                        <span class="fa fa-edit"></span>
+                                        <span class="fa fa-edit" style="color: black"></span>
                                     </a>
                                 </button>
                                 <button class="btn btn-sm btn-danger mr-1">
-                                    <span class="fa fa-trash"></span>
+                                    <a href="{{route('admin.post.destroy', $post->id)}}">
+                                      <span class="fa fa-trash" style="color: black"></span>
+                                    </a>
                                 </button>
                             </div>
                         </td>

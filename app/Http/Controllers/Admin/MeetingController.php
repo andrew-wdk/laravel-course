@@ -55,10 +55,10 @@ class MeetingController extends Controller
      */
     public function edit(Meeting $meeting)
     {
-        $data['meeting'] = $meeting->with('attendance');
+        $resource = $meeting->with('attendance');
 
-        $data['user'] = User::select(['id', 'name'])->get();
-        return  view('admin.meeting.edit', compact('data'));
+        $data = User::select(['id', 'name'])->get();
+        return  view('admin.meeting.edit', compact('data','resource'));
     }
 
     /**

@@ -27,19 +27,19 @@
                             <div class="row">
                                 <button class="btn btn-sm btn-primary mr-1">
                                     <a href="{{route('admin.role.show', $role->id)}}" class="text-white">
-                                        <span class="fa fa-eye"></span>
+                                        <span class="fa fa-eye" style="color: black"></span>
                                     </a>
                                 </button>
                                 <button class="btn btn-sm btn-success mr-1">
                                     <a href="{{route('admin.role.edit', $role->id)}}" class="text-white">
-                                        <span class="fa fa-edit"></span>
+                                        <span class="fa fa-edit" style="color: black"></span>
                                     </a>
                                 </button>
                                 <form method="POST" action="{{route('admin.role.destroy', $role->id)}}">
                                     {{csrf_field()}}
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button class="btn btn-sm btn-danger mr-1">
-                                        <span class="fa fa-trash"></span>
+                                        <span class="fa fa-trash" style="color: black"></span>
                                     </button>
                                 </form>
                             </div>

@@ -33,13 +33,19 @@
                         <td>
                             <div class="row">
                                 <button class="btn btn-sm btn-primary mr-1">
-                                    <span class="fa fa-eye"></span>
+                                    <a href="{{route('admin.user.show', $user->id)}}">
+                                     <span class="fa fa-eye" style="color: black"></span>
+                                    </a>
                                 </button>
                                 <button class="btn btn-sm btn-success mr-1">
-                                    <span class="fa fa-edit"></span>
+                                    <a href="{{route('admin.user.edit', $user->id)}}">
+                                     <span class="fa fa-edit" style="color: black"></span>
+                                    </a>
                                 </button>
                                 <button class="btn btn-sm btn-danger mr-1">
-                                    <span class="fa fa-trash"></span>
+                                    <a href="{{route('admin.event.destroy', $user->id)}}">
+                                     <span class="fa fa-trash" style="color: black"></span>
+                                    </a>
                                 </button>
                             </div>
                         </td>

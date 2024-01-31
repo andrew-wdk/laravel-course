@@ -68,7 +68,7 @@
                     <label for="type">Type</label>
                     <select name="type" id="type" class="form-control">
                         @foreach(App\Models\Post::TYPES as $type)
-                            <option value="{{$type}}" @selected(old('type', $post->type) == $type)>
+                            <option value="{{$type}}" @selected(old('type') == $type)>
                                 {{$type}}
                             </option>
                         @endforeach
