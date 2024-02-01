@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-group col-md-12">
                     <label for="body">Body</label>
-                    <textarea name="body" id="body" class="form-control" rows="3" required value="{{old('body',$post->body)}}">{{ old('body', $post->body) }}</textarea>
+                    <textarea name="body" id="body" class="form-control" rows="3" required>{{ old('body', $post->body) }}</textarea>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="attachment">Attachment</label>
@@ -37,7 +37,7 @@
                 <div class="form-group col-md-6">
                     <label for="user_id">User</label>
                     <select name="user_id" id="user_id" class="form-control">
-                        <option value="">Select</option>
+                        <option value="">{{ old('body', $post->body) }}</option>
                         @foreach($users ?? [] as $user)
                             <option value="{{$user->id}}" @selected(old('user_id', $post->user_id) == $user->id)>
                                 {{$user->name}}

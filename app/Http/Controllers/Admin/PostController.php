@@ -59,6 +59,9 @@ class PostController extends Controller
         if($request->file('image')) {
             $post->addMediaFromRequest('image')->toMediaCollection('image');
         }
+        if($request->file('attachment')) {
+            $post->addMediaFromRequest('attachment')->toMediaCollection('attachment');
+        }
 
         // $post = new Post();
         // $post->title = $request->title;
@@ -82,7 +85,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.post.edit', compact('post'));
+        $imageUrl = $post->getFirstMediaUrl('image');
+        $attachment = $post->getFirstMediaUrl('attachment');
+        return view('admin.post.edit', compact('post','imageUrl','attachment'));
     }
 
     /**
@@ -96,6 +101,10 @@ class PostController extends Controller
             $post->clearMediaCollection('image');
             $post->addMediaFromRequest('image')->toMediaCollection('image');
         }
+        if($request->file('attachment')) {
+            $post->clearMediaCollection('attachment');
+            $post->addMediaFromRequest('attachment')->toMediaCollection('attachment');
+        }
     }
 
     /**
@@ -106,6 +115,7 @@ class PostController extends Controller
          if($post){
             $post->delete();
             $post->clearMediaCollection('image');
+            $post->clearMediaCollection('attachment');
          }
          return redirect()->route('admin.post.index');
          

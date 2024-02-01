@@ -32,7 +32,7 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        $event = Event::create($request->all());
+         Event::create($request->validated());
        // $event->users()->attach($request->leader_id);
 
         return redirect()->route('admin.event.index');
@@ -43,7 +43,8 @@ class EventController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $event = Event::with('leader')->findOrFail($id);
+        return view('admin.event.show', compact('event'));
     }
 
     /**
@@ -51,16 +52,19 @@ class EventController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $event = Event::with('leader')->findOrFail($id);
+        $users = User::select(['id', 'name'])->whereNot('id',$event->leader_id)->get();
+        return view('admin.event.edit', compact('event','users'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Event $id)
+    public function update(Request $request, Event $event)
     {
-       // $meeting->update($request->all());
-        return redirect()->route('admin.meeting.index');
+        $event->update($request->validated());
+        
+        return redirect()->route('admin.event.index');
     }
 
     /**
