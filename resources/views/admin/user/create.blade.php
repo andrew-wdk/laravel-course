@@ -40,13 +40,18 @@
                     </style>
                 </div>
                 <div class="form-group col-md-12">
-                    <label for="telephone-no.">الرقم الشخصى</label>
-                    <input type="text" name="telephone-no" id="phone" class="form-control" pattern="^0[\d]{10}" required min-length="11" max-length="11" placeholder="أدخل 11 رقم">
+                    <label for="phone">الرقم الشخصى</label>
+                    <input type="text" name="phone" id="phone" class="form-control" pattern="^0[\d]{10}" required min-length="11" max-length="11" placeholder="أدخل 11 رقم">
                     <!-- I want to add here to accept zero's -->
                 </div>
                 <div class="form-group col-md-12">
                     <label for="address">العنوان</label>
                     <input type="text" name="address" id="address" class="form-control" required>
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="telephone-no.">النقط</label>
+                    <input type="number" name="points" id="points" class="form-control">
+                   
                 </div>
                 <!-- <div class="dropdown"><label for="father">اب الأعتراف</label>
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">اب الأعتراف
@@ -70,7 +75,8 @@
                         <option value="other">اب كاهن اخر</option>
                     </select>
                     <input type="text" id="other-input" name="other-input" placeholder="ادخل اسم الكاهن" style="display: none;">
-                    <script>
+                   <br>
+                   <script>
                         var select = document.getElementById("father");
                         // Get the input element by its id
                         var input = document.getElementById("other-input");
