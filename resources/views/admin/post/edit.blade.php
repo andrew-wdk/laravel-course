@@ -15,8 +15,7 @@
                 <div class="form-group col-md-12">
                     <label for="title">Title</label>
                     <input type="text" name="title" id="title" class="form-control"
-                        value="{{old('title', $post->title)}}" required
-                    >
+                        value="{{old('title', $post->title)}}" required>
                     @error('title')
                         <div class="text-danger"> {{$errors->first('title')}} </div>
                     @enderror
@@ -33,6 +32,9 @@
                             <label class="custom-file-label" for="attachment">Choose file</label>
                         </div>
                     </div>
+                    @if($post->attachment)
+                      <a href="{{ $attachmentUrl }}" target="_blank">Download Attachment</a>
+                    @endif
                 </div>
                 <div class="form-group col-md-6">
                     <label for="user_id">User</label>
@@ -77,7 +79,7 @@
                     @enderror
                 </div>
                 <div class="form-group col-md-6">
-                    <img src="{{$post->getFirstMediaUrl('image')}}" class="img-fluid">
+                    <img src="{{$imageUrl}}" class="img-fluid">
                 </div>
             </div>
         </div>
