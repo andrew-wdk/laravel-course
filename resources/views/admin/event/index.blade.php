@@ -28,7 +28,7 @@
                         <td>{{$event->title}}</td>
                         <td>{{$event->leader->name}}</td>
                         <td>{{$event->event_fees}}</td>
-                        <td>{{$event->start_datet}}</td>
+                        <td>{{$event->start_date}}</td>
                         <td>
                             <div class="row">
                                 <button class="btn btn-sm btn-primary mr-1">

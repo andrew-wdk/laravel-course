@@ -47,7 +47,7 @@ class MeetingController extends Controller
     public function show(Meeting $meeting)
     {
         $meeting->with('attendance');
-        return  view('admin.meeting.show', compact('$meeting'));
+        return  view('admin.meeting.show', compact('meeting'));
     }
 
     /**

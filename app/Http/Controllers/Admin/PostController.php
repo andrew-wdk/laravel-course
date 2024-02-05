@@ -87,6 +87,7 @@ class PostController extends Controller
     {
         $imageUrl = $post->getFirstMediaUrl('image');
         $attachment = $post->getFirstMediaUrl('attachment');
+        $users = User::select(['id', 'name'])->get();
         return view('admin.post.edit', compact('post','imageUrl','attachment'));
     }
 

@@ -86,6 +86,14 @@
                 </div>
 
                 <div class="form-group col-md-6">
+                    <label for="expires_at">expires at</label>
+                    <input name="expires_at" id="expires_at" type="datetime-local" class="form-control">
+                    @error('expires_at')
+                        <div class="text-danger"> {{$errors->first('expires_at')}} </div>
+                    @enderror
+                </div>
+
+                <div class="form-group col-md-6">
                     <label for="image">image</label>
                     <input name="image" id="image" type="file" class="form-control">
                     @error('image')

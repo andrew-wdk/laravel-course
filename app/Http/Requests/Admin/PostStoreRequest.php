@@ -27,9 +27,11 @@ class PostStoreRequest extends FormRequest
             'body' => 'required',
             'attachment' => 'nullable|file|mimes:pdf,png,jpg,svg|max:10240',
             'user_id' => 'required|exists:users,id',
-            'status' => 'required|integer|in:0,1',
-            'type' => 'required|string|in:' . implode(',', Post::TYPES),
+            'status' => 'required|string|in:0,1'. implode(',', Post::STATUSES),
+           // 'type' => 'required|integer|in:1,2,3',
+           'type' => 'required|string|in:' . implode(',', Post::TYPES),
             'publish_at' => 'nullable|date|after:' . today(),
+            'expires_at' => 'nullable|date|after:' . today(),
             'image' => 'nullable|image',
         ];
     }
