@@ -40,9 +40,7 @@
         </div>
         <div class="card-footer">
 
-            <button type="submit" class="btn btn-primary bg-black " id="button1" style="border:none;
-             border-radius:8px; font-family:cursive; margin-left:450px;">
-            Submit</button>
+            <button type="submit" class="btn btn-primary bg-black " id="button1" style="border:none; border-radius:8px; font-family:cursive; margin-left:450px;">Submit</button>
         </div>
     </div>
 </form>
