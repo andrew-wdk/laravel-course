@@ -30,9 +30,9 @@
                 </div>
                 <div class="form-group col-md-12">
                     <label for="section">الفصل</label><br>
-                    <label class="radio-inline"><input type="radio" name="choosing_section" checked>4</label>
-                    <label class="radio-inline"><input type="radio" name="choosing_section">5</label>
-                    <label class="radio-inline"><input type="radio" name="choosing_section">6</label>
+                    <label class="radio-inline"><input type="radio" name="choosing_section" value="4" checked>4</label>
+                    <label class="radio-inline"><input type="radio" name="choosing_section" value="5">5</label>
+                    <label class="radio-inline"><input type="radio" name="choosing_section" value="6">6</label>
                     <style>
                         .radio-inline {
                             margin-right: 30px;
@@ -40,7 +40,7 @@
                     </style>
                 </div>
                 <div class="form-group col-md-12">
-                    <label for="phone">الرقم الشخصى</label>
+                    <label for="phone">الرقم محمول الشخصى</label>
                     <input type="text" name="phone" id="phone" class="form-control" pattern="^0[\d]{10}" required min-length="11" max-length="11" placeholder="أدخل 11 رقم">
                     <!-- I want to add here to accept zero's -->
                 </div>

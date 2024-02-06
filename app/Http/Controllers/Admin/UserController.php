@@ -47,7 +47,7 @@ class UserController extends Controller
 
         // $post->save();
 
-        return redirect(url('post'));
+        return redirect()->route('admin.user.index');
     }
 
     /**

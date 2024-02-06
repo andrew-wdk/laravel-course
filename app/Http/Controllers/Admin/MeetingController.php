@@ -44,21 +44,20 @@ class MeetingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Meeting $meeting)
+    public function show(string $id)
     {
-        $meeting->with('attendance');
+        $meeting = Meeting::with('attendance')->find($id);
         return  view('admin.meeting.show', compact('meeting'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Meeting $meeting)
+    public function edit(string $id)
     {
-        $resource = $meeting->with('attendance');
-
-        $data = User::select(['id', 'name'])->get();
-        return  view('admin.meeting.edit', compact('data','resource'));
+         $meeting = Meeting::with('attendance')->find($id);
+        $users = User::select(['id', 'name'])->get();
+        return  view('admin.meeting.edit', compact('users','meeting'));
     }
 
     /**
@@ -66,7 +65,6 @@ class MeetingController extends Controller
      */
     public function update(Request $request, Meeting $meeting)
     {
-
         $meeting->update($request->all());
         $meeting->attendance()->attach($request->attendance ?? []);
         return redirect()->route('admin.meeting.index');
