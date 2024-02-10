@@ -18,7 +18,7 @@
                 </div>
                 <div class="form-group col-md-12">
                     <label for="name">رقم العضوية</label>
-                    <input type="text" name="id" id="id" class="form-control" required>
+                    <input type="text" name="membership_no" id="membership_no" class="form-control" required>
                 </div>
                 <div class="form-group col-md-12">
                     <label for="email">الأيميل</label>
