@@ -23,7 +23,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $this->authorize('roles_view');
+       // $this->authorize('roles_view');
 
         $roles = Role::get();
 

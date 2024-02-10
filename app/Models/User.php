@@ -40,6 +40,7 @@ class User extends Authenticatable implements HasMedia
         'choosing_section',
         'level_id',
         'qrcode',
+        'id';
     ];
 
 
