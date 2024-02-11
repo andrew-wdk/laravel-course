@@ -17,7 +17,7 @@
                     <input type="text" name="name" id="name" class="form-control" required>
                 </div>
                 <div class="form-group col-md-12">
-                    <label for="name">رقم العضوية</label>
+                    <label for="membership_no">رقم العضوية</label>
                     <input type="text" name="membership_no" id="membership_no" class="form-control" required>
                 </div>
                 <div class="form-group col-md-12">
@@ -53,7 +53,7 @@
                     <input type="text" name="address" id="address" class="form-control" required>
                 </div>
                 <div class="form-group col-md-12">
-                    <label for="telephone-no.">النقط</label>
+                    <label for="points">النقط</label>
                     <input type="number" name="points" id="points" class="form-control">
                    
                 </div>
