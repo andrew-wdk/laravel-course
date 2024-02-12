@@ -19,25 +19,25 @@
                 <div class="form-group col-12 col-md-6">
                 <span class="fa fa-calendar-week"></span>
                     <label for="start-date " style="font-family:cursive;"> start-date</label>
-                    <input type="date" name="start_date" id="sd" class="form-control" value="{{old('title', $event->start_date)}}" required>
+                    <input type="date" name="start_date" id="sd" class="form-control" value="{{old('start_date', $event->start_date)}}" required>
                 </div>
 
                 <div class="form-group col-6">
                 <span class="fa fa-calendar-week"></span>
                     <label for="end-date" style="font-family:cursive;"> end-date</label>
-                    <input name="end_date" id="end_date" type="date" class="form-control" value="{{old('title', $event->end_date)}}" required>
+                    <input name="end_date" id="end_date" type="date" class="form-control" value="{{old('end_date', $event->end_date)}}" required>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-12 col-md-6">
                 <span class="fa fa-clock"></span>
                     <label for="departure-time" style="font-family:cursive;"> departure-time</label>
-                    <input class="form-control" type="time" name="departure_time" id="departure_time" value="{{old('title', $event->departure_time)}}">
+                    <input class="form-control" type="time" name="departure_time" id="departure_time" value="{{old('departure_time', $event->departure_time)}}">
                     </div>
                     <div class="form-group col-12 col-md-6">
                     <span class="fa fa-clock"></span>
                     <label for="return-time" style="font-family:cursive;"> return-time</label>
-                    <input  class="form-control" type="time" name="return_time" id="return_time" value="{{old('title', $event->return_time)}}">
+                    <input  class="form-control" type="time" name="return_time" id="return_time" value="{{old('return_time', $event->return_time)}}">
                     </div>
                 </div>
                 <div class="row">

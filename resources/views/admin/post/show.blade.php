@@ -13,67 +13,51 @@
 
             <div class="col-lg-4 my-1 form-Roles">
                 <label class="form-label">Title</label>
-                <p type="text" class="form-control " name="title" >{{old('title', $event->title)}}</p>
+                <p type="text" class="form-control " name="title" >{{old('title', $post->title)}}</p>
                 @error('title')
                     <div class="text-danger"> {{$errors->first('title')}} </div>
                 @enderror
             </div>
-            <div class="row">
-                <div class="form-group col-12 col-md-6">
-                <span class="fa fa-calendar-week"></span>
-                    <label for="start-date " style="font-family:cursive;"> start-date</label>
-                    <p  name="start_date" id="sd" class="form-control">{{old('title', $event->start_date)}}</p>
-                </div>
-
-                <div class="form-group col-6">
-                <span class="fa fa-calendar-week"></span>
-                    <label for="end-date" style="font-family:cursive;"> end-date</label>
-                    <p name="end_date" id="end_date" type="date" class="form-control">{{old('title', $event->end_date)}}</p>
-                </div>
+            
+            
+            <div>
+              <span class="fa fa-comments" style="color:yellow;"></span>
+              <label for="body" style="font-family:cursive;" id="body">body</label>
+              <p name="body" id="body" class="form-control" rows="3">{{ old('body', $post->body) }}</p>
+                    
             </div>
-            <div class="row">
-                <div class="form-group col-12 col-md-6">
-                <span class="fa fa-clock"></span>
-                    <label for="departure-time" style="font-family:cursive;"> departure-time</label>
-                    <p class="form-control"  name="departure_time" id="departure_time"> {{old('title', $event->departure_time)}}</p>
-                    </div>
-                    <div class="form-group col-12 col-md-6">
-                    <span class="fa fa-clock"></span>
-                    <label for="return-time" style="font-family:cursive;"> return-time</label>
-                    <p  class="form-control"  name="return_time" id="return_time"> {{old('title', $event->return_time)}}</p>
-                    </div>
-                </div>
-                <div class="row">
-                <div class="form-group col-12">
-                <span class="fa fa-user"></span>
-                    <label for="leader_id" style="font-family:cursive;">Leader</label>
-                    <p  class="form-control " name="title"> {{old('title', $event->leader->name)}}</p>
-                </div>
-                </div>
 
-                <div class="row">
-                <div class="col-12">
-                    <span class="fa fa-wallet"></span>
-                    <label for="fee" style="font-family:cursive;"> Event Fees </label>
-                    <p class="form-control mb-2"  name="event_fees" id="event_fees"> {{old('title', $event->event_fees)}}</p>
-                </div>
-                </div>
-
-
-                <div class="row">
-                <div class="col-12">
-                    <span class="fa fa-map-pin"></span>
-                    <label for="location" style="font-family:cursive;">Location</label>
-                    <p class="form-control mb-3"  name="location" id="location" placeholder="Enter the Event Location"> {{old('title', $event->location)}}</p>
-                </div>
-                </div>
-                <div>
-                <span class="fa fa-comments" style="color:yellow;"></span>
-                    <label for="notes" style="font-family:cursive;" id="notes">Notes</label>
-                    <p name="notes" id="notes" class="form-control" rows="3">{{ old('body', $event->notes) }}</p>
-                </div></textarea>
-                </div>
+            <div class="form-group col-md-6">
+                <label for="attachment">Attachment</label>
+                @if(!empty($attachment))
+                  <a href="{{ $attachment }}" target="_blank">Download Attachment</a>
+                  @endif
             </div>
+
+                <div class="form-group col-md-6">
+                    <label for="user_id">User</label>
+                    <p type="user_id" class="form-control " name="user_id" >{{old('user_id', $post->users->name)}}</p>
+                    
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="status">Status</label>
+                    <p type="status" class="form-control " name="status" >{{old('status', $post->status)}}</p>
+                    
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="type">Type</label>
+                    <p type="type" class="form-control " name="type" >{{old('type', $post->type)}}</p>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="publish_at">Publish at</label>
+                    <p type="publish_at" class="form-control " name="tpublish_at" >{{old('publish_at', $post->publish_at)}}</p>
+                    <input name="publish_at" id="publish_at" type="datetime-local" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="image">image</label>
+                    <img src="{{$imageUrl}}" class="img-fluid">
+                </div>
+           
         </div>
         <div class="card-footer">
 

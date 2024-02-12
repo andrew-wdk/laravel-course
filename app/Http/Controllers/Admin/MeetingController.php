@@ -65,6 +65,7 @@ class MeetingController extends Controller
      */
     public function update(Request $request, Meeting $meeting)
     {
+        dd($request->all());
         $meeting->update($request->all());
         $meeting->attendance()->attach($request->attendance ?? []);
         return redirect()->route('admin.meeting.index');

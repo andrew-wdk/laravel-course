@@ -13,10 +13,10 @@ class PostController extends Controller
     /**
      * Create the controller instance.
      */
-    public function __construct()
-    {
-        $this->authorizeResource(Post::class, 'post');
-    }
+    // public function __construct()
+    // {
+    //     $this->authorizeResource(Post::class, 'post');
+    // }
 
     /**
      * Display a listing of the resource.
@@ -77,7 +77,11 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $post = Post::with('users')->find($id);
+        $imageUrl = $post->getFirstMediaUrl('image');
+        $attachment = $post->getFirstMediaUrl('attachment');
+        $users = User::select(['id', 'name'])->whereNot('id',$post->user_id)->get();
+        return view('admin.post.show', compact('post','imageUrl','attachment'));
     }
 
     /**
@@ -88,6 +92,7 @@ class PostController extends Controller
         $post = Post::with('users')->find($id);
         $imageUrl = $post->getFirstMediaUrl('image');
         $attachment = $post->getFirstMediaUrl('attachment');
+       // dd($attachment);
         $users = User::select(['id', 'name'])->whereNot('id',$post->user_id)->get();
         return view('admin.post.edit', compact('post','imageUrl','attachment'));
     }

@@ -32,14 +32,14 @@
                             <label class="custom-file-label" for="attachment">Choose file</label>
                         </div>
                     </div>
-                    @if($post->attachment)
-                      <a href="{{ $attachmentUrl }}" target="_blank">Download Attachment</a>
-                    @endif
+                    @if(!empty($attachment))
+                      <a href="{{ $attachment }}" target="_blank">Download Attachment</a>
+                      @endif
                 </div>
                 <div class="form-group col-md-6">
                     <label for="user_id">User</label>
                     <select name="user_id" id="user_id" class="form-control">
-                        <option value="">{{ old('body', $post->body) }}</option>
+                        {{-- <option value="">{{ old('body', $post->body) }}</option> --}}
                         @foreach($users ?? [] as $user)
                             <option value="{{$user->id}}" @selected(old('user_id', $post->user_id) == $user->id)>
                                 {{$user->name}}

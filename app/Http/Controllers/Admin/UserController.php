@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $this->authorize('viewAny', User::class);
+       // $this->authorize('viewAny', User::class);
         // gets data from database
         // associative array key = posts , value = data
         // $data['posts'] = Post::get();
