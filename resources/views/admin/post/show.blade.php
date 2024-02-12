@@ -21,7 +21,7 @@
             
             
             <div>
-              <span class="fa fa-comments" style="color:yellow;"></span>
+              
               <label for="body" style="font-family:cursive;" id="body">body</label>
               <p name="body" id="body" class="form-control" rows="3">{{ old('body', $post->body) }}</p>
                     
@@ -34,25 +34,25 @@
                   @endif
             </div>
 
+            <div class="row">
                 <div class="form-group col-md-6">
                     <label for="user_id">User</label>
-                    <p type="user_id" class="form-control " name="user_id" >{{old('user_id', $post->users->name)}}</p>
-                    
+                    <p type="user_id" class="form-control" name="user_id">{{old('user_id', $post->users->name ?? '')}}</p>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="status">Status</label>
-                    <p type="status" class="form-control " name="status" >{{old('status', $post->status)}}</p>
-                    
+                    <p type="status" class="form-control" name="status">{{old('status', $post->status)}}</p>
                 </div>
+           
                 <div class="form-group col-md-6">
                     <label for="type">Type</label>
-                    <p type="type" class="form-control " name="type" >{{old('type', $post->type)}}</p>
+                    <p type="type" class="form-control" name="type">{{old('type', $post->type)}}</p>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="publish_at">Publish at</label>
-                    <p type="publish_at" class="form-control " name="tpublish_at" >{{old('publish_at', $post->publish_at)}}</p>
-                    <input name="publish_at" id="publish_at" type="datetime-local" class="form-control">
+                    <p type="publish_at" class="form-control" name="publish_at">{{old('publish_at', $post->publish_at)}}</p>
                 </div>
+            </div>
                 <div class="form-group col-md-6">
                     <label for="image">image</label>
                     <img src="{{$imageUrl}}" class="img-fluid">
