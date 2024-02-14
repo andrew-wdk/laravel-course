@@ -125,6 +125,11 @@ class User extends Authenticatable implements HasMedia
         return $this->hasMany(Event::class,'leader_id');
     }
 
+    public function posts()
+    {
+        return $this->hasMany(post::class);
+    }
+
     public function generateQRCode()
     {
         $this->clearMediaCollection('qrcode');

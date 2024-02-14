@@ -45,7 +45,7 @@ class Post extends Model implements HasMedia
 
     public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 
     public function status(): Attribute

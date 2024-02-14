@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="user_id">User</label>
-                    <p type="user_id" class="form-control" name="user_id">{{old('user_id', $post->users->name ?? '')}}</p>
+                    <p type="user_id" class="form-control" name="user_id">{{old('user_id', $post->users->name )}}</p>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="status">Status</label>
