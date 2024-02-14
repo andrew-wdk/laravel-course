@@ -7,8 +7,9 @@
 @stop
 
 @section('content')
-<form action="{{route('admin.post.update', $post->id)}}" method="POST">
+<form action="{{ route('admin.post.update', $post->id) }}" method="POST">
     {{csrf_field()}}
+    <input type="hidden" name="_method" value="PUT">
     <div class="card card-primary">
         <div class="card-body">
             <div class="row">
@@ -39,7 +40,7 @@
                 <div class="form-group col-md-6">
                     <label for="user_id">User</label>
                     <select name="user_id" id="user_id" class="form-control">
-                        {{-- <option value="">{{ old('body', $post->body) }}</option> --}}
+                        <option value="">{{ old('user_id', $post->users->name) }}</option>
                         @foreach($users ?? [] as $user)
                             <option value="{{$user->id}}" @selected(old('user_id', $post->user_id) == $user->id)>
                                 {{$user->name}}
@@ -69,7 +70,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="publish_at">Publish at</label>
-                    <input name="publish_at" id="publish_at" type="datetime-local" class="form-control">
+                    <input name="publish_at" id="publish_at" type="datetime-local" class="form-control" value="{{old('title', $post->publish_at)}}" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="image">image</label>

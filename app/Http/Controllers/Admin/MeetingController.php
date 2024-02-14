@@ -55,17 +55,17 @@ class MeetingController extends Controller
      */
     public function edit(string $id)
     {
-         $meeting = Meeting::with('attendance')->find($id);
+        $meeting = Meeting::with('attendance')->find($id);
         $users = User::select(['id', 'name'])->get();
-        return  view('admin.meeting.edit', compact('users','meeting'));
+        return  view('admin.meeting.edit', compact('users', 'meeting'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Meeting $meeting)
     {
-        $meeting = Meeting::find($id)->update($request->all());
+        $meeting->update($request->all());
         $meeting->attendance()->attach($request->attendance ?? []);
         return redirect()->route('admin.meeting.index');
     }

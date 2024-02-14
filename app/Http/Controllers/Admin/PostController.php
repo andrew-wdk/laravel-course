@@ -56,10 +56,10 @@ class PostController extends Controller
     {
         $post = Post::create($request->validated());
 
-        if($request->file('image')) {
+        if ($request->file('image')) {
             $post->addMediaFromRequest('image')->toMediaCollection('image');
         }
-        if($request->file('attachment')) {
+        if ($request->file('attachment')) {
             $post->addMediaFromRequest('attachment')->toMediaCollection('attachment');
         }
 
@@ -80,7 +80,7 @@ class PostController extends Controller
         $post = Post::with('users')->find($id);
         $imageUrl = $post->getFirstMediaUrl('image');
         $attachment = $post->getFirstMediaUrl('attachment');
-        return view('admin.post.show', compact('post','imageUrl','attachment'));
+        return view('admin.post.show', compact('post', 'imageUrl', 'attachment'));
     }
 
     /**
@@ -91,8 +91,8 @@ class PostController extends Controller
         $post = Post::with('users')->find($id);
         $imageUrl = $post->getFirstMediaUrl('image');
         $attachment = $post->getFirstMediaUrl('attachment');
-        $users = User::select(['id', 'name'])->whereNot('id',$post->user_id)->get();
-        return view('admin.post.edit', compact('post','imageUrl','attachment','users'));
+        $users = User::select(['id', 'name'])->whereNot('id', $post->user_id)->get();
+        return view('admin.post.edit', compact('post', 'imageUrl', 'attachment', 'users'));
     }
 
     /**
@@ -102,14 +102,15 @@ class PostController extends Controller
     {
         $post->update($request->validated());
 
-        if($request->file('image')) {
+        if ($request->file('image')) {
             $post->clearMediaCollection('image');
             $post->addMediaFromRequest('image')->toMediaCollection('image');
         }
-        if($request->file('attachment')) {
+        if ($request->file('attachment')) {
             $post->clearMediaCollection('attachment');
             $post->addMediaFromRequest('attachment')->toMediaCollection('attachment');
         }
+        return redirect()->route('admin.post.index');
     }
 
     /**
@@ -117,13 +118,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-         if($post){
+        if ($post) {
             $post->delete();
             $post->clearMediaCollection('image');
             $post->clearMediaCollection('attachment');
-         }
-         return redirect()->route('admin.post.index');
-         
-
+        }
+        return redirect()->route('admin.post.index');
     }
 }

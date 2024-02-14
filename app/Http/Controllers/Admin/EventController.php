@@ -32,7 +32,7 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-         Event::create($request->validated());
+         Event::create($request->all());
        // $event->users()->attach($request->leader_id);
 
         return redirect()->route('admin.event.index');
@@ -62,7 +62,7 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        $event->update($request->validated());
+        $event->update($request->all());
         
         return redirect()->route('admin.event.index');
     }

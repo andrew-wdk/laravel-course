@@ -5,6 +5,7 @@
 @section('content')
 <form action="{{route('admin.event.update', $event->id)}}" method="POST">
 {{csrf_field()}}
+<input type="hidden" name="_method" value="PUT">
     <div class="card card-primary">
         <div class="card-body">
 
@@ -45,7 +46,7 @@
                 <span class="fa fa-user"></span>
                     <label for="leader_id" style="font-family:cursive;">Leader-ID</label>
                     <select name="leader_id" id="leader_id" class="form-control">
-                        <option value="">{{old('title', $event->leader->name)}}</option>
+                        <option value="{{$event->leader_id}}">{{old('title', $event->leader->name)}}</option>
                         @foreach ($users ?? [] as $user)
                         <option value="{{ $user->id }}">
                             {{ $user->name }}

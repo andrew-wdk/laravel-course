@@ -3,8 +3,9 @@
 
 
 @section('content')
-<form action="{{route('admin.meeting.update', $meeting->id)}}" method="PUT">
+<form action="{{route('admin.meeting.update', $meeting->id)}}" method="POST">
     {{csrf_field()}}
+    <input type="hidden" name="_method" value="PUT">
     <div class="card card-primary">
         <div class="card-body">
             <div class="form-group col-md-12">
