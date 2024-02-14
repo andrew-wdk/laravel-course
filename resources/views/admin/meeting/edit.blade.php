@@ -19,12 +19,13 @@
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col-12 col-md-6">
-                <span class="fa fa-clock"></span>
-                    <label for="Meeting-time" style="font-family:cursive;">Meeting time</label>
-                    <input class="form-control" type="time" name="meeting_time" id="meeting-time"  value="{{old('title', $meeting->meeting_time)}}" required>
-                </div>
+                    <div class="form-group col-12 col-md-6">
+                        <span class="fa fa-clock"></span>
+                        <label for="Meeting-time" style="font-family:cursive;">Meeting time</label>
+                        <input class="form-control" type="time" name="meeting_time" id="meeting-time"  value="{{old('title', $meeting->meeting_time)}}" required>
+                    </div>
             </div>
+            
                 <div class="row">
                     <div class="form-group col-12">
                         <span class="fa fa-user"></span>
@@ -36,7 +37,7 @@
                                 @endforeach
                     </div>
                 </div>
-            </div>
+            {{-- </div> --}}
         </div>
         <div class="card-footer">
             <button type="submit" class="btn btn-primary bg-black " id="button1" style="border:none; border-radius:8px; font-family:cursive; margin-left:450px;">Submit</button>

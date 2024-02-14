@@ -63,10 +63,9 @@ class MeetingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Meeting $meeting)
+    public function update(Request $request, string $id)
     {
-        dd($request->all());
-        $meeting->update($request->all());
+        $meeting = Meeting::find($id)->update($request->all());
         $meeting->attendance()->attach($request->attendance ?? []);
         return redirect()->route('admin.meeting.index');
     }

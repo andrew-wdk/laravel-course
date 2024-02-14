@@ -23,7 +23,7 @@ class UserStoreRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'membership_no' => 'required|membership_no|unique:users',
+            'membership_no' => 'required|unique:users',
             'email' => 'required|email|unique:users',
             'password' => 'required',
             'NationalID' => 'required',
