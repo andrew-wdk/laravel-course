@@ -400,6 +400,25 @@ return [
                 ],
             ],
         ],
+        [
+            'text'    => 'Visit',
+            'icon'    => 'fas fa-clock',
+            'can'     => 'visits_view',
+
+            'submenu' => [
+                [
+                    'text' => 'List',
+                    'url'  => 'admin/visit',
+                    'icon' => 'fas fa-list',
+                ],
+                [
+                    'text'    => 'Create',
+                    'url'     => 'admin/visit/create',
+                    'icon'    => 'fas fa-plus',
+                    'can'     => 'visits_create',
+                ],
+            ],
+        ]
     ],
 
     /*

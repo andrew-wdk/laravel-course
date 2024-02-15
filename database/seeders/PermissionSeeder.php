@@ -39,6 +39,11 @@ class PermissionSeeder extends Seeder
             'roles_create',
             'roles_edit',
             'roles_delete',
+
+            'visits_view',
+            'visits_create',
+            'visits_edit',
+            'visits_delete',
         ];
 
         $permissions = array_map(

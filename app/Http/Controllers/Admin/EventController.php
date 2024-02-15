@@ -23,7 +23,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        $users = User::select(['id', 'name'])->get();
+        $users = User::role('servant')->select(['id', 'name'])->get();
         return  view('admin.event.create', compact('users'));
     }
 
@@ -53,7 +53,7 @@ class EventController extends Controller
     public function edit(string $id)
     {
         $event = Event::with('leader')->findOrFail($id);
-        $users = User::select(['id', 'name'])->whereNot('id',$event->leader_id)->get();
+        $users = User::role('servant')->select(['id', 'name'])->whereNot('id',$event->leader_id)->get();
         return view('admin.event.edit', compact('event','users'));
     }
 

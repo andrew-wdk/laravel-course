@@ -25,7 +25,7 @@ class MeetingController extends Controller
      */
     public function create()
     {
-        $users = User::select(['id', 'name'])->get();
+        $users = User::role('student')->select(['id', 'name'])->get();
         return  view('admin.meeting.create', compact('users'));
     }
 
@@ -56,7 +56,7 @@ class MeetingController extends Controller
     public function edit(string $id)
     {
         $meeting = Meeting::with('attendance')->find($id);
-        $users = User::select(['id', 'name'])->get();
+        $users = User::role('student')->select(['id', 'name'])->get();
         return  view('admin.meeting.edit', compact('users', 'meeting'));
     }
 

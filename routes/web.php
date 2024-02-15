@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\Admin\EventController;
-use App\Http\Controllers\Admin\MeetingController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\VisitController;
+use App\Http\Controllers\Admin\MeetingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,4 +48,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     Route::resource('meeting', MeetingController::class);
 
     Route::resource('role', RoleController::class);
+    Route::resource('visit', VisitController::class);
 });

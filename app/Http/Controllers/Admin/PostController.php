@@ -43,7 +43,7 @@ class PostController extends Controller
         // this was the simple way of defining some users
         // $users = ['roufeail', 'marina', 'micheal', 'andrew'];
         // to get a specific columns from the table
-        $users = User::select(['id', 'name'])->get();
+        $users = User::role('servant')->select(['id', 'name'])->get();
 
         // key users value = data from database
         return view('admin.post.create', compact('users'));
@@ -91,7 +91,7 @@ class PostController extends Controller
         $post = Post::with('users')->find($id);
         $imageUrl = $post->getFirstMediaUrl('image');
         $attachment = $post->getFirstMediaUrl('attachment');
-        $users = User::select(['id', 'name'])->whereNot('id', $post->user_id)->get();
+        $users = User::role('servant')->select(['id', 'name'])->whereNot('id', $post->user_id)->get();
         return view('admin.post.edit', compact('post', 'imageUrl', 'attachment', 'users'));
     }
 

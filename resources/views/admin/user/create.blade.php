@@ -20,19 +20,19 @@
                     <label for="membership_no">رقم العضوية</label>
                     <input type="text" name="membership_no" id="membership_no" class="form-control" required>
                 </div>
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-6">
                     <label for="email">الأيميل</label>
                     <input type="email" name="email" id="email" class="form-control">
                 </div>
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-6">
                     <label for="password">password</label>
                     <input type="password" name="password" id="password" class="form-control" required>
                 </div>
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-6">
                     <label for="NationalID">الرقم القومى</label>
                     <input type="number" name="NationalID" id="NationalID" class="form-control" required min="10000000000000" max="99999999999999" placeholder="أدخل 14 رقم">
                 </div>
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-6">
                     <label for="section">الفصل</label><br>
                     <label class="radio-inline"><input type="radio" name="choosing_section" value="4" checked>4</label>
                     <label class="radio-inline"><input type="radio" name="choosing_section" value="5">5</label>
@@ -43,12 +43,12 @@
                         }
                     </style>
                 </div>
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-6">
                     <label for="phone">الرقم محمول الشخصى</label>
                     <input type="text" name="phone" id="phone" class="form-control" pattern="^0[\d]{10}" required min-length="11" max-length="11" placeholder="أدخل 11 رقم">
                     <!-- I want to add here to accept zero's -->
                 </div>
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-6">
                     <label for="address">العنوان</label>
                     <input type="text" name="address" id="address" class="form-control" required>
                 </div>
@@ -69,7 +69,7 @@
                     </ul>
                      <input type="text" id="other-input" name="other-input" placeholder="ادخل اسم الكاهن" style="display: none;">
                 </div> -->
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-6">
                     <label for="father">اب الأعتراف</label><br>
                     <select id="father" name="father" class="form-control">
                         <option value="ابونا يوسف">ابونا يوسف</option>
@@ -99,6 +99,14 @@
                             }
                         });
                     </script>
+                </div>
+                <div class="form-group col-md-6" >
+                    <label for="role_id">Role</label>
+                    <select name="role_id" id="role_id" class="form-control">
+                        @foreach($roles as $id => $name)
+                            <option value="{{ $name }}">{{ $name }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
         </div>

@@ -31,6 +31,7 @@ class UserStoreRequest extends FormRequest
             'phone' => 'required',
             'points' => 'required',
             'father' => 'required',
+            'role_id'=> 'required',
         ];
     }
 

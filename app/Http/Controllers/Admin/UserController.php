@@ -38,16 +38,10 @@ class UserController extends Controller
      */
     public function store(UserStoreRequest $request)
     {
+       // dd($request->all());
         $user = User::create($request->all());
 
         $user->assignRole($request->role);
-
-        // $post = new Post();
-        // $post->title = $request->title;
-        // $post->body = $request->body;
-
-        // $post->save();
-
         return redirect()->route('admin.user.index');
     }
 
