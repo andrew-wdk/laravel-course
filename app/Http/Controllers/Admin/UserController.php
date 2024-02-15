@@ -19,7 +19,7 @@ class UserController extends Controller
         // gets data from database
         // associative array key = posts , value = data
         // $data['posts'] = Post::get();
-        $users = User::with('lastVisit')->get();
+        $users = User::with('lastVisit','servants')->get();
 
         return view('admin.user.index', compact('users'));
     }
@@ -30,7 +30,8 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::pluck('name', 'id');
-        return view('admin.user.create', compact('roles'));
+        $servants = User::role('servant')->select(['id', 'name'])->get();
+        return view('admin.user.create', compact('roles','servants'));
     }
 
     /**
@@ -40,8 +41,8 @@ class UserController extends Controller
     {
        // dd($request->all());
         $user = User::create($request->all());
-
-        $user->assignRole($request->role);
+        $user->assignRole($request->role_id);
+        $user->servants()->attach($request->servants ?? []);
         return redirect()->route('admin.user.index');
     }
 
@@ -50,7 +51,8 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user = User::with('servants')->find($id);
+        return view('admin.user.show' , compact('user'));
     }
 
     /**
@@ -58,15 +60,21 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::with('servants')->find($id);
+        $servants = User::role('servant')->select(['id', 'name'])->get();
+        $roles = Role::pluck('name', 'id');
+        return view('admin.user.edit', compact('servants','roles','user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->update($request->all());
+        $user->assignRole($request->role_id);
+        $user->servants()->syncWithoutDetaching($request->servants ?? []);
+        return redirect()->route('admin.user.index');
     }
 
     /**

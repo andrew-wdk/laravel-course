@@ -10,7 +10,7 @@
 
     <div class="card card-primary">
         <div class="card-body table-responsive">
-            <table class="table table-bordered table-striped">
+            <table id="table" class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th style="width: 10px">#</th>
@@ -63,3 +63,14 @@
 
 
 
+@section('css')
+<link href="https://cdn.datatables.net/v/dt/dt-1.13.7/datatables.min.css" rel="stylesheet">
+@stop
+
+@section('js')
+<script src="https://cdn.datatables.net/v/dt/dt-1.13.7/datatables.min.js"></script>
+
+<script>
+    $('#table').dataTable();
+</script>
+@stop

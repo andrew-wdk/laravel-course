@@ -25,7 +25,7 @@ class Visit extends Model
 
     public function servant()
     {
-        return $this->belongsTo(User::class, 'servant_id ');
+        return $this->belongsTo(User::class, 'servant_id');
     }
 
 }

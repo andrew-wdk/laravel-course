@@ -22,16 +22,17 @@ class UserStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
-            'membership_no' => 'required|unique:users',
-            'email' => 'required|email|unique:users',
-            'password' => 'required',
-            'NationalID' => 'required',
+            'name'             => 'required',
+            'membership_no'    => 'required|unique:users',
+            'email'            => 'required|email|unique:users',
+            'password'         => 'required',
+            'NationalID'       => 'required',
             'choosing_section' => 'required',
-            'phone' => 'required',
-            'points' => 'required',
-            'father' => 'required',
-            'role_id'=> 'required',
+            'phone'            => 'required',
+            'points'           => 'required',
+            'father'           => 'required',
+            'role_id'          => 'required',
+            'servants'         => 'required',
         ];
     }
 

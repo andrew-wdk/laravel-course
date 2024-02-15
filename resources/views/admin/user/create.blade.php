@@ -108,6 +108,15 @@
                         @endforeach
                     </select>
                 </div>
+
+                <div class="form-group col-12">
+                    <span class="fa fa-user"></span>
+                        <label style="font-family:cursive;">الخدام</label><br>
+                            @foreach($servants ?? [] as $uservant)
+                                <input name="servants[]" id="servants{{$uservant->id}}" class="form-check-label" type="checkbox" value="{{$uservant->id}}">
+                                <label for="servants{{$uservant->id}}">{{$uservant->name}}</label><br>
+                            @endforeach
+                    </div>
             </div>
         </div>
         <div class="card-footer">

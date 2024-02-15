@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\Visit;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Vite;
 
 class VisitController extends Controller
 {
@@ -12,7 +15,8 @@ class VisitController extends Controller
      */
     public function index()
     {
-        //
+        $visits = Visit::with('student','servant')->get();
+        return view('admin.visit.index', compact('visits'));
     }
 
     /**
@@ -20,7 +24,8 @@ class VisitController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::select(['id','name'])->get();
+        return view('admin.visit.create', compact('users'));
     }
 
     /**
@@ -28,7 +33,8 @@ class VisitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Visit::create($request->all());
+        return redirect()->route('admin.visit.index');
     }
 
     /**
@@ -36,7 +42,8 @@ class VisitController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $visit = Visit::with('student','servant')->find($id);
+        return  view('admin.visit.show', compact('visit'));
     }
 
     /**
@@ -44,22 +51,27 @@ class VisitController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $visit = Visit::with('student','servant')->find($id);
+        $users =  User::select(['id','name'])->whereNot('id', $visit->servant_id)->whereNot('id', $visit->student_id)->get();
+        return view('admin.visit.edit', compact('visit','users'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Visit $visit)
     {
-        //
+        $visit->update($request->all());
+        return redirect()->route('admin.visit.index');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Visit $visit)
     {
-        //
+        if ($visit) $visit->delete();
+        return redirect()->route('admin.visit.index');
     }
 }
